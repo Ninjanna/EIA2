@@ -6,7 +6,7 @@
 	</projects>
 	<buildSpec>
 		<buildCommand>
-			<name>com.palantir.typescript.typeScriptBuilder</name>
+			<name>com.genuitec.eclipse.typescript.typeScriptBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
