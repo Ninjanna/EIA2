@@ -6,7 +6,7 @@ Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert.*/ 
 
-function Welcome(): void {
+function welcome(): void {
   var name: string = prompt("Hey sweetie, what's your name?", "");
     document.getElementById("Blub").innerHTML =
       "Willkommen " + name + " :) ";  
