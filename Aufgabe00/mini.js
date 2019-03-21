@@ -10,4 +10,4 @@ function welcome() {
     document.getElementById("Blub").innerHTML =
         "Willkommen " + name + " :) ";
 }
-//# sourceMappingURL=mini.js.map
+//# sourceMappingURL=mini.js.map 
