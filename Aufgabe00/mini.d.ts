@@ -1,1 +1,2 @@
 declare function welcome(): void;
+
