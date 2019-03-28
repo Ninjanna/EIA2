@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", welcome);
-function welcome() {
+function welcome(): void {
     let name:string = prompt("Hey sweetie, what's your name?", "");
     document.getElementById("Blub").innerHTML =
         "Willkommen " + name + " :) ";
