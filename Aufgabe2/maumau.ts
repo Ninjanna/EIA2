@@ -1,5 +1,6 @@
+namespace Aufgabe2 {
 
-
+document.addEventListener("DOMContentLoaded", abfrage);
 
 let hand: string[] = [];
 let ablage: string[] = [];
@@ -45,7 +46,7 @@ function abfrage(): void {
     anzeigen();
 }
 
-document.addEventListener("DOMContentLoaded", abfrage);
+
 
 function kartenAusgabe(_handKartenAnzahl: number): void {
     for (let i: number = 0; i < _handKartenAnzahl; i++) {
@@ -131,4 +132,5 @@ function handSortieren() : void{
         console.log('lol');
         (<HTMLDivElement>handDiv.children[0]).innerText = hand[i];
     }
+}
 }
