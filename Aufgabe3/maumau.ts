@@ -140,7 +140,7 @@ function zieheKarte() : void {
     {
         if(s1 == "As")             //As wird zu Z
             s1 = "Z"
-        if(s2 == "As")
+        if(s2 == "As") 
             s2 = "Z"
         if(s1 > s2)             //sobald As=Z kann man es normal vergleichen, da BDK<Z
             return 1             // 1 -> a>b
