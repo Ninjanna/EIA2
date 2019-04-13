@@ -140,4 +140,4 @@ var Aufgabe2;
         }
     }
 })(Aufgabe2 || (Aufgabe2 = {}));
-//# sourceMappingURL=maumau.js.map
+//# sourceMappingURL=maumau3.js.map
