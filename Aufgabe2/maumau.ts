@@ -171,8 +171,4 @@ namespace Aufgabe2 {
             (<HTMLDivElement>handDiv.children[i]).innerText = hand[i];
         }
     }
-    } 
-
-    
-    
-    
+    }    
