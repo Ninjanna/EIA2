@@ -4,19 +4,19 @@ var Aufgabe2;
     let hand = [];
     let ablage = [];
     let nachziehstapel = [" ♥ 7", " ♥ 8", " ♥ 9", " ♥ 10", " ♥ Bube", " ♥ Dame", " ♥ König", " ♥ As",
-        " ♦ 7", " ♦ 8", " ♦ 9", " ♦ 10", " ♦ Bube", " ♦ Dame", " ♦ König", " ♦ As",
+        " ♦ 7", " ♦ Raute 8", " ♦ 9", " ♦ 10", " ♦ Bube", " ♦ Dame", " ♦ König", " ♦ As",
         " ♣ 7", " ♣ 8", " ♣ 9", " ♣ 10", " ♣ Bube", " ♣ Dame", " ♣ König", " ♣ As",
         " ♠ 7", " ♠ 8", " ♠ 9", " ♠ 10", " ♠ Bube", " ♠ Dame", " ♠ König", " ♠ As"];
+    //♥ ♦ ♣ ♠
     let handDiv;
     let nachziehstapelDiv;
     let ablagedDiv;
-    //nachziehstapelDiv.addEventListener('click', zieheKarte)
     function abfrage() {
         handDiv = document.getElementById('handkarten'); // im html dokument das element handkarten by id abfragen
         nachziehstapelDiv = document.getElementById('nachziehstapel'); // im html dokument das element nachziehstapel by id abfragen
         nachziehstapelDiv.addEventListener('click', zieheKarte);
         ablagedDiv = document.getElementById('ablage'); // im html dokument das element ablage by id abfragen
-        document.getElementById('sortierenTaste').onclick = handSortieren;
+        document.getElementById("sortierenTaste").addEventListener("click", handSortieren);
         document.addEventListener("keydown", leertaste);
         let handKartenAnzahl;
         do {
@@ -96,14 +96,16 @@ var Aufgabe2;
         ablagedDiv.innerText = karte; // text des ablagestabels = kartentext (wie bei erstelleNeueKarte)
     }
     function vergleiche(_a, _b) {
+        //typ number: muss was negatives, 0 oder + rausgeben damit .sort weis was größer ist 
         // Farben
         let s1 = _a.substr(0, 2); //.substr schneidet die ersten beiden zeichen ab (leerzeichen und farbe)
         let s2 = _b.substr(0, 2); //von a UND b 
-        if (s1 != s2) //leerzeichen + farbe können ganz normal verglichen werden
+        if (s1 != s2) { //leerzeichen + farbe können ganz normal verglichen werden
             if (s1 < s2)
-                return 1;
+                return -1;
             else
-                return 0;
+                return 1;
+        }
         // Bube, Dame, König, Ass -----------------Zusatz Aufgabe-------------------
         s1 = _a.substr(3); // B, D, und K haben alphabetisch schon die richtige reihenfolge. fehlt nur das Ass
         s2 = _b.substr(3); //brauchen "ausnahmeregelung für vergleich von BDKA" 
@@ -115,10 +117,10 @@ var Aufgabe2;
                 s1 = "Z";
             if (s2 == "As")
                 s2 = "Z";
-            if (s1 > s2) //sobald As=Z kann man es normal vergleichen, da BDK<Z
-                return 1; // 1 -> a>b
+            if (s1 < s2) //sobald As=Z kann man es normal vergleichen, da BDK<Z
+                return -1; // 1 -> a>b
             else
-                return 0; //0 -> a<=b
+                return 1; //0 -> a<=b
         }
         s1 = _a.substr(3); //verl. zwei zahlen
         s2 = _b.substr(3);
@@ -127,14 +129,23 @@ var Aufgabe2;
         b = parseInt(s2);
         if (!isNaN(a) && !isNaN(b)) //nur wenn beide ints sind...
             return a - b; // return ist was negatives (3-5 = -2 -> negativ -> a<b -> 3<5 -> true :)
-        if (s1 > s2) //vergl. zahl mit BDKA, zahl < buchstabe immer
-            return 1; // a>b -> a größer -> return was positives
-        return 0; // a<=b
+        if (s1 < s2) //vergl. zahl mit BDKA, zahl < buchstabe immer
+            return -1; // a>b -> a größer -> return was positives
+        else if (s1 > s2)
+            return 1;
+        return 0;
     }
+    // let sortierenTasteDiv:HTMLElement;
+    //     console.log("kuku345")
+    //     sortierenTasteDiv = document.getElementById('sortierenTaste'); // im html dokument das element nachziehstapel by id abfragen
+    //     sortierenTasteDiv.addEventListener('click', handSortieren)
+    //     //document.getElementById('sortierenTaste').onclick = handSortieren;
     function handSortieren() {
+        //console.log(hand)
         //.sort(function(a, b){return a-b}) (w3schools) -> .sort gibt <0 wenn a<b,0 wenn a=b, >0 wenn a>b 
         hand.sort(vergleiche); //eigene fnkt: vergleiche: gibt eine eigene sortier logik vor, sagt .sort wann etwas größer/kleiner ist -> gut für bube, dame etc.
         //sort ruft vergleiche auf um 2 elemente zu vergleichen
+        //console.log(hand)
         for (let i = 0; i < handDiv.children.length; i++) {
             handDiv.children[i].innerText = hand[i];
         }
