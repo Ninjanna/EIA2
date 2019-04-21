@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-3 menu">
     <ul>
-      <li>Gesamtpreis:</li>
+      <li>Gesamtpreis: <span id="price"></span> Euro</li>
       <li>Sorte:
           <ul id="sorteliste">
           </ul>
@@ -23,7 +23,7 @@
         <ul id="zusatzliste">
         </ul>
       </li>
-    <li>Form:</li>
+    <li>Form: <div id="formwahl"></div> </li>
     </ul>
   </div>
 
@@ -56,7 +56,15 @@
         <label for="karamel">Karamel Creme</label>
     </fieldset>
     </p>
-
+	<fieldset id="form">
+            <legend> Dareichungsform (Im Preis incl)</legend>
+            <input name="Form" type="radio" value="Becher" id="becher" />
+            <label for="becher">Becher</label>
+            <input name="Form" type="radio" value="Waffel" id="waffel" />
+            <label for="waffel">Waffel</label>
+            <input name="Form" type="radio" value="Schoko-Waffel" id="schokowaffel" />
+            <label for="schokowaffel">Schoko-Waffel</label>
+        </fieldset>
   </div>
 
   <div class="col-3">

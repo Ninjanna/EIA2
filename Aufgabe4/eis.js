@@ -1,12 +1,21 @@
 var Eis;
 (function (Eis) {
     window.addEventListener("load", init);
+    let gesammtPreis = 0;
     function init() {
         console.log("I'm working! :D ");
         document.getElementById("sorteButton").addEventListener("click", sorteAnzeigen);
         document.getElementById("streusel").addEventListener("click", anzeigenZusatz);
         document.getElementById("sahne").addEventListener("click", anzeigenZusatz);
         document.getElementById("karamel").addEventListener("click", anzeigenZusatz);
+        document.getElementById("becher").addEventListener("click", anzeigenForm);
+        document.getElementById("waffel").addEventListener("click", anzeigenForm);
+        document.getElementById("schokowaffel").addEventListener("click", anzeigenForm);
+    }
+    function preisAktualisieren(_beitrag) {
+        gesammtPreis += _beitrag;
+        let preisElement = document.getElementById("price");
+        preisElement.innerText = gesammtPreis.toString();
     }
     function sorteAnzeigen() {
         console.log("huhu");
@@ -19,6 +28,7 @@ var Eis;
         let liNode = document.createElement("LI"); //<li> node https://www.w3schools.com/jsref/met_node_appendchild.asp
         liNode.innerText = sorte.options[sorte.selectedIndex].text; //wie man ne liste befüllt ^
         sorteliste.appendChild(liNode);
+        preisAktualisieren(1.0);
     }
     function anzeigenZusatz(_event) {
         let check = _event.target; // rausfinden auf welche karte geklickt wurde indem man das event holt
@@ -29,10 +39,20 @@ var Eis;
             liNode.innerText = checkVal; //wie man ne liste befüllt ^
             liNode.id = checkVal;
             zusatzListe.appendChild(liNode); //das gecheckte der liste hinzufügen
+            preisAktualisieren(0.50);
         }
         else {
             let zusatzListe = document.getElementById(checkVal); // beim unchecken...
             zusatzListe.parentNode.removeChild(zusatzListe); //....removen
+            preisAktualisieren(-0.50);
+        }
+    }
+    function anzeigenForm(_event) {
+        let check = _event.target; // rausfinden auf welche karte geklickt wurde indem man das event holt
+        if (check.checked) {
+            let checkVal = check.value; //text dieser karte holen
+            let formWahl = document.getElementById("formwahl");
+            formWahl.innerText = check.value;
         }
     }
 })(Eis || (Eis = {}));
