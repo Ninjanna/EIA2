@@ -107,6 +107,8 @@ function pruefenUndBestellen() : void {
     if(!pruefeFelder("Postleitzahl", "Du muss deine Postleitzahl eingeben")) return;
     if(!pruefeFelder("Adresse", "Du musst deine Strasse eingeben")) return;
 
+    alert("Alles passt. Wird geliefert!")
+
 }
 
 }

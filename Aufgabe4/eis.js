@@ -83,6 +83,7 @@ var Eis;
             return;
         if (!pruefeFelder("Adresse", "Du musst deine Strasse eingeben"))
             return;
+        alert("Alles passt. Wird geliefert!");
     }
 })(Eis || (Eis = {}));
 //# sourceMappingURL=eis.js.map
