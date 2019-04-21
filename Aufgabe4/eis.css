@@ -15,7 +15,7 @@
     display: table;
   }
   
-  [class*="col-"] {
+  [class*="spalte-"] {
     float: left;
     padding: 15px;
   }
@@ -64,20 +64,15 @@ input:valid {
 	background: white;
 }
 input:required {
-	background: #706e6e;
+	background: #aaaaaa;
 }
   
   /* For mobile phones: */
-  [class*="col-"] {
+  [class*="spalte-"] {
     width: 100%;
   }
-  
-
   @media only screen and (min-width: 768px) {
     /* For desktop: */
-
-    .rechts {width: 25%;}
-    .links {width: 25%;}
-
-    .mitte {width: 50%;}
+    .spalte-seiten {width: 25%;}
+    .spalte-mitte {width: 50%;}
   } 
