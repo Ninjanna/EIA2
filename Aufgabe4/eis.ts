@@ -15,6 +15,9 @@ function init (){
     document.getElementById("becher").addEventListener("click", anzeigenForm);
     document.getElementById("waffel").addEventListener("click", anzeigenForm);
     document.getElementById("schokowaffel").addEventListener("click", anzeigenForm);
+
+    document.getElementById("button").addEventListener("click", pruefenUndBestellen);
+
 }
 
 
@@ -73,5 +76,37 @@ function anzeigenForm(_event: Event ) : void {
     }
 }
 
+
+function pruefeFelder(_elementId: string, _nachricht : string) : boolean {
+    let element : HTMLInputElement = <HTMLInputElement>document.getElementById(_elementId)
+    if(element.value.length == 0)
+    {
+        alert(_nachricht)
+        return false;
+    }
+
+    return true;
+}
+
+function pruefeListen(_listeId: string, _nachricht : string) : boolean {
+    let element : HTMLUListElement = <HTMLUListElement>document.getElementById(_listeId)
+    if(element.children.length == 0)
+    {
+        alert(_nachricht)
+        return false;
+    }
+
+    return true;
+}
+
+function pruefenUndBestellen() : void {
+    if(!pruefeListen("sorteliste", "Du musst deine Sorte waehlen")) return;
+
+    if(!pruefeFelder("Name", "Du muss den Namen eingeben")) return;               //damit nich 1000 alerts kommen
+    if(!pruefeFelder("Stadt", "Du musst deine Stadt eingeben")) return;
+    if(!pruefeFelder("Postleitzahl", "Du muss deine Postleitzahl eingeben")) return;
+    if(!pruefeFelder("Adresse", "Du musst deine Strasse eingeben")) return;
+
+}
 
 }
