@@ -22,6 +22,7 @@ namespace L05_Server {        // öffnet namespace für L05_Server
 		_response.setHeader("Access-Control-Allow-Origin", "*");  // noch mehr was in den header von _response kommt
 
 		_response.write(_request.url);  //die soeben in _response definierten werte werden nun die url von _request geschrieben
+		
 
 		_response.end();  //schließt _response ab und signalisiert dies dem Server 
 	}

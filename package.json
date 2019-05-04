@@ -1,0 +1,16 @@
+
+{
+	"name" : "eisapp",
+	"version" : "12.0.0",
+	"description" : "eis app",
+	"author" : "Jeanna Nechypurenko",
+	"main" : "Server.js",
+	"scripts" : {
+		"start" : "node Hacking102/EIA2/Aufgabe6/test/Server/Server.js"
+	},
+	"engines" : {
+		"node" : "6.11.1"
+	},
+	"dependencies" : {
+	}
+} 
