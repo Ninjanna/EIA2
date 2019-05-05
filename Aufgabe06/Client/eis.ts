@@ -104,6 +104,7 @@ function zusatzChecks(_zusatz: [string, number][]): void {
         let checkBox: HTMLInputElement = document.createElement("input");
         checkBox.type = "checkbox";
         checkBox.value = z[0];
+        checkBox.name = "checkboxGroup_Topping"
         checkBox.id = z[0];
         checkBox.onclick = anzeigenZusatz
         checkBox.setAttribute("preis", z[1].toString());
