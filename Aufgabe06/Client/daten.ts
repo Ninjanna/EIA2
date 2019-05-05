@@ -1,5 +1,5 @@
 
-namespace Eiss  {
+namespace Eis  {
 
     export let sortenListe: [string, number][];
     sortenListe = [

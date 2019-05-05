@@ -1,7 +1,12 @@
 var Eis;
 (function (Eis) {
     window.addEventListener("load", init);
+    let address = "https://eisapp.herokuapp.com";
+    let url = "";
+    //document.getElementById("abschicken").addEventListener("click", abschicken);
     let gesammtPreis = 0;
+    function abschicken() {
+    }
     function init() {
         console.log("I'm working! :D ");
         document.getElementById("sorteButton").addEventListener("click", sorteAnzeigen);

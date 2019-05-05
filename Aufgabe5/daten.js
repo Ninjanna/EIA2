@@ -1,6 +1,6 @@
-var Eis;
-(function (Eis) {
-    Eis.sortenListe = [
+var Eiss;
+(function (Eiss) {
+    Eiss.sortenListe = [
         ["Schokii", 1.1],
         ["Vanille", 1.2],
         ["Erdbeere", 1.3],
@@ -11,16 +11,16 @@ var Eis;
         ["Joghurt", 1.8],
         ["Pizza", 1.9]
     ];
-    Eis.zusatzListe = [
+    Eiss.zusatzListe = [
         ["Streusel", 0.5],
         ["Sahne", 0.6],
         ["Karamel", 0.7]
     ];
-    Eis.formListe = [
+    Eiss.formListe = [
         "Becher",
         "Waffel",
         "Schokowaffel",
         "Special Corn Waffel"
     ];
-})(Eis || (Eis = {}));
+})(Eiss || (Eiss = {}));
 //# sourceMappingURL=daten.js.map

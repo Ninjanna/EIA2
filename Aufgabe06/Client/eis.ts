@@ -2,10 +2,15 @@ namespace Eis  {
 
 
 window.addEventListener("load", init);
-
+let address: string = "https://eisapp.herokuapp.com";
+let url: string = "";
+//document.getElementById("abschicken").addEventListener("click", abschicken);
 let gesammtPreis: number = 0; 
 
 
+
+function abschicken (){
+}
 
 
 function init (){
