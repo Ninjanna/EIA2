@@ -52,6 +52,33 @@ var Eis;
         let price = parseFloat(sorte.options[sorte.selectedIndex].getAttribute("preis"));
         preisAktualisieren(price);
     }
+    // zeug was an server geschickt wurde anzeigen 
+    function sortenImLinkZeigen() {
+        //console.log("jaja bin schon da");
+        let urlSchreiben = "https://eisapp.herokuapp.com/?";
+        console.log("sortenListe");
+        for (let i = 0; i < Eis.sortenListe.length; i++) {
+            if (Eis.sortenListe[i] != null) {
+                let anzahl = 0;
+                let sorteliste = document.getElementById("sorteliste");
+                for (let k = 0; k < sorteliste.children.length; k++) {
+                    if (sorteliste.children[k].innerHTML == Eis.sortenListe[i][0]) {
+                        anzahl += 1;
+                    }
+                }
+                urlSchreiben += `${Eis.sortenListe[i][0]}=${anzahl}&`;
+            }
+        }
+        let alles = document.getElementsByTagName("input");
+        for (let ding of alles) {
+            if (ding.checked == true)
+                urlSchreiben += `${ding.name}=${ding.value}&`;
+            if (ding.type == "text")
+                urlSchreiben += `${ding.name}=${ding.value}&`;
+        }
+        console.log(urlSchreiben);
+        window.open(urlSchreiben);
+    }
     function sortenAuswahl(_sorte) {
         let select = document.getElementById("sorte");
         for (let s of _sorte) { //in lässt über inex laufen, gibt also 0,1,2... da müsste man _zusatz[i] schreiben. for.. of gibt direkt die elemente 
@@ -74,8 +101,8 @@ var Eis;
             // checkbox erstellen
             let checkBox = document.createElement("input");
             checkBox.type = "checkbox";
-            checkBox.value = z[0];
-            checkBox.name = "checkboxGroup_Topping";
+            //checkBox.value = z[0];
+            checkBox.name = z[0];
             checkBox.id = z[0];
             checkBox.onclick = anzeigenZusatz;
             checkBox.setAttribute("preis", z[1].toString());
@@ -150,6 +177,7 @@ var Eis;
         return true;
     }
     function pruefenUndBestellen() {
+        sortenImLinkZeigen();
         if (!pruefeListen("sorteliste", "Du musst deine Sorte waehlen"))
             return;
         if (!pruefeFelder("Name", "Du muss den Namen eingeben"))
