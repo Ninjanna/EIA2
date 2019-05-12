@@ -19,7 +19,8 @@ var L05_Server;
         console.log("I hear voices!"); // sobald die funktion handleRequest aufgerufen wird, gibt sie "I hear voices" auf der konsole aus
         _response.setHeader("content-type", "text/html; charset=utf-8"); //_response erhält werte für den header  
         _response.setHeader("Access-Control-Allow-Origin", "*"); // noch mehr was in den header von _response kommt
-        _response.write(_request.url); //die soeben in _response definierten werte werden nun die url von _request geschrieben
+        //_response.write(_request.url);  //die hässliche url
+        _response.write("Hier finden sie eine Übersicht über Ihre Bestellung");
         let url = Url.parse(_request.url, true);
         for (let param in url.query)
             _response.write("<p>" + param + " : " + url.query[param] + "</p>");
