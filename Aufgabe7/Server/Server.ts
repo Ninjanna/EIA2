@@ -25,7 +25,7 @@ namespace L05_Server {        // öffnet namespace für L05_Server
 		
 	let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 		for (let param in url.query)
-			_response.write("<p>" + param + url.query[param] + "</p>");
+			_response.write("<p>" + param + " : " + url.query[param] + "</p>");
 		
 		console.log(_request.url); 
 

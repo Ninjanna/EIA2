@@ -22,7 +22,7 @@ var L05_Server;
         _response.write(_request.url); //die soeben in _response definierten werte werden nun die url von _request geschrieben
         let url = Url.parse(_request.url, true);
         for (let param in url.query)
-            _response.write("<p>" + param + url.query[param] + "</p>");
+            _response.write("<p>" + param + " : " + url.query[param] + "</p>");
         console.log(_request.url);
         _response.end(); //schließt _response ab und signalisiert dies dem Server 
     }
