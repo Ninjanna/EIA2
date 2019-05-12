@@ -1,5 +1,5 @@
 
-namespace Eisz  {
+namespace Eis  {
 
     export let sortenListe: [string, number][];
     sortenListe = [
@@ -26,7 +26,7 @@ namespace Eisz  {
         "Becher",
         "Waffel",
         "Schokowaffel",
-        "Special Corn Waffel"
+        "Special-Corn-Waffel"
     ];
 
 

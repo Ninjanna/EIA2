@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="eis.css" type="text/css" rel="stylesheet">
+  <script type="text/javascript" src="daten.js"></script> 
+  <script type="text/javascript" src="eis.js"></script> 
+</head>
+
+<body>
+
+<div class="header">
+  <h1>Jeannas Eis Deale</h1>
+</div>
+
+<form action="https://eisapp.herokuapp.com" method="get">
+
+<div class="row">
+  <div class="spalte-seiten menu"> 
+    <ul>
+      <li>Gesamtpreis: <span id="price"></span> Euro</li>
+      <li>Sorte:
+          <ul id="sorteliste">
+          </ul>
+      </li>
+      <li>Zusatz:
+        <ul id="zusatzliste">
+        </ul>
+      </li>
+    <li>Form: <div id="formwahl"></div> </li>
+    </ul>
+  </div>
+
+  <div class="spalte-mitte">
+    <h1>Jeanna has it all</h1>
+    <p>Make the perfect Ice cream for you! And don't worry about the snow outside, tecnically it's summer :D</p>
+    Pic your flavour
+    <select name="Sorte" id="sorte">
+
+<!--
+        <option value="Schoki">Schokolade</option>
+        <option value="Vanille">Vanille</option>
+        <option value="Erdbeere">Erdbeere</option>
+        <option value="Cookies">Cookies</option>
+        <option value="Banane">Banane</option>
+        <option value="Nugat">Nugat</option>
+        <option value="Straciatella">Straciatella</option>
+        <option value="Zitrone">Zitrone</option>
+        <option value="Joghurt">Joghurt</option>
+        <option value="Pizza">Pizza</option>
+-->
+
+    </select>
+
+    <button type = "button" id="sorteButton" >Will ich</button>
+    <button type = "button" id="deleteSorteButton" >Will ich nicht</button>
+    <p>
+    <fieldset id="zusatz">
+        <legend> Pimp it up </legend>
+        <!--
+        <input type="checkbox" value="Streusel" id="streusel"/>
+        <label for="streusel">Streusel</label>
+        <input type="checkbox" value="Sahne" id="sahne"/>
+        <label for="sahne">Sahne</label>
+        <input type="checkbox" value="Karamel Creme" id="karamel"/>
+        <label for="karamel">Karamel Creme</label>
+        -->
+    </fieldset> 
+    </p>
+    <br/>
+	  <fieldset id="form">
+    <!--
+            <legend> Dareichungsform (Im Preis incl)</legend>
+            <input name="Form" type="radio" value="Becher" id="becher" />
+            <label for="becher">Becher</label>
+            <input name="Form" type="radio" value="Waffel" id="waffel" />
+            <label for="waffel">Waffel</label>
+            <input name="Form" type="radio" value="Schoko-Waffel" id="schokowaffel" />
+            <label for="schokowaffel">Schoko-Waffel</label>
+            -->
+    </fieldset>
+    <br/>
+    <fieldset id="lieferoptionen">
+            <legend>Lieferoptionen</legend>
+            <p>What's your name, honey</p>
+            <input  name ="Name" type="text" id="Name" placeholder="Name" required /> <br/>
+    
+            <p>Stadt</p>
+            <input name ="Stadt" type="text" id="Stadt" placeholder="Stadt" required /> <br/>
+    
+            <p>Postleitzahl</p>
+            <input name ="Postleitzahl" type="text" id="Postleitzahl" pattern="[0-9]{5}" required /> <br/>
+            
+            <p>Strasse</p>
+            <input name ="Strasse" type="text" id="Adresse" placeholder="Strasse und Nr" required /> <br/>
+    </fieldset>
+    <button type = "button" id="button">Bestellung checken</button>
+    <button type="button" id="abschicken">Bestellung abschicken</button>
+    <br>
+    <div id="serverAntwort"> </div>
+  </div>
+</form>
+  <div class="spalte-seiten">
+    <div class="aside">
+      
+      <h2>Ice Ice Baby! </h2>
+      <p> Get the best Ice cream in the whole world, delivered right to your home :) </p>
+   
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

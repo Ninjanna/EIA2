@@ -1,8 +1,6 @@
-
-namespace Eisz  {
-
-    export let sortenListe: [string, number][];
-    sortenListe = [
+var Eis;
+(function (Eis) {
+    Eis.sortenListe = [
         ["Schokii", 1.1],
         ["Vanille", 1.2],
         ["Erdbeere", 1.3],
@@ -13,21 +11,16 @@ namespace Eisz  {
         ["Joghurt", 1.8],
         ["Pizza", 1.9]
     ];
-
-    export let zusatzListe: [string, number][];
-    zusatzListe = [
-        ["Streusel",0.5], 
-        ["Sahne",0.6], 
+    Eis.zusatzListe = [
+        ["Streusel", 0.5],
+        ["Sahne", 0.6],
         ["Karamel", 0.7]
     ];
-
-
-    export let formListe: string[] = [
+    Eis.formListe = [
         "Becher",
         "Waffel",
         "Schokowaffel",
-        "Special Corn Waffel"
+        "Special-Corn-Waffel"
     ];
-
-
-}
+})(Eis || (Eis = {}));
+//# sourceMappingURL=daten.js.map
