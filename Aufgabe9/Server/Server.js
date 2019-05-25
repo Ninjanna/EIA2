@@ -20,6 +20,7 @@ function handleListen() {
     console.log("Listening on port: " + port);
 }
 function handleRequest(_request, _response) {
+    _response.setHeader("Access-Control-Allow-Origin", "*"); // noch mehr was in den header von _response kommt
     console.log("Request received");
     let query = Url.parse(_request.url, true).query;
     let command = query["command"];
