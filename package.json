@@ -1,16 +1,19 @@
-
 {
-	"name" : "eisapp",
-	"version" : "12.0.0",
-	"description" : "eis app",
-	"author" : "Jeanna Nechypurenko",
-	"main" : "Server.js",
-	"scripts" : {
-		"start" : "node Aufgabe7/Server/Server.js"
+	"name": "eisapp",
+	"version": "12.0.0",
+	"description": "eis app",
+	"author": "Jeanna Nechypurenko",
+	"main": "Server.js",
+	"scripts": {
+		"start": "node Aufgabe9/Server/Server.js"
 	},
-	"engines" : {
-		"node" : "6.11.1"
+	"engines": {
+		"node": "6.11.1"
 	},
-	"dependencies" : { 
+	"dependencies": {
+		"@types/mongodb": "^3.1.27",
+		"@types/node": "^12.0.2",
+		"mongodb": "^3.2.6",
+		"node": "^12.3.1"
 	}
-} 
+}
