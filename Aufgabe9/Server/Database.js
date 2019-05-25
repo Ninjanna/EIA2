@@ -12,10 +12,10 @@ let databaseName = "eia2A9";
 let db;
 let students;
 // running on heroku?
-if (process.env.NODE_ENV == "production") {
-    databaseURL = "mongodb+srv://cluster0-wbyyo.mongodb.net/testmongodb+srv://testuser:testpassword@eia2-57vpd.mongodb.net/eia2";
-    databaseName = "eia2A9";
-}
+//if (process.env.NODE_ENV == "production") {
+databaseURL = "mongodb+srv://cluster0-wbyyo.mongodb.net/testmongodb+srv://testuser:testpassword@eia2-57vpd.mongodb.net/eia2";
+databaseName = "eia2A9";
+//
 // try to connect to database, then activate callback "handleConnect" 
 Mongo.MongoClient.connect(databaseURL, { connectTimeoutMS: 8000 }, handleConnect);
 // connect-handler receives two standard parameters, an error object and a database client object
