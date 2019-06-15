@@ -6,12 +6,14 @@ Datum: 02.06.2019
 
 Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
-nicht kopiert und auch nicht diktiert.
+nicht kopiert und auch nicht diktiert. 
 */
-var seaworld_canvas;
-(function (seaworld_canvas) {
+
+namespace seaworldcanvas {
+
     //draw alge nach rechts geneigt
-    function drawAlgeOnee(_c1, _c2, _x, _y, _crc) {
+    export function drawAlgeOne(_c1: string, _c2: string, _x: number, _y: number, _crc: CanvasRenderingContext2D): void {
+
         _crc.beginPath();
         _crc.moveTo(_x, _y);
         _crc.quadraticCurveTo(_x - 40, _y - 185, _x + 20, _y - 230);
@@ -21,10 +23,13 @@ var seaworld_canvas;
         _crc.fill();
         _crc.strokeStyle = _c2;
         _crc.stroke();
+
     }
-    seaworld_canvas.drawAlgeOnee = drawAlgeOnee;
+
+
     //draw alge nach links geneigtS
-    function drawAlgeTwoo(_c1, _c2, _x, _y, _crc) {
+    export function drawAlgeTwo(_c1: string, _c2: string, _x: number, _y: number, _crc: CanvasRenderingContext2D): void {
+
         _crc.beginPath();
         _crc.moveTo(_x, _y);
         _crc.quadraticCurveTo(_x - 60, _y - 185, _x - 20, _y - 230);
@@ -34,7 +39,6 @@ var seaworld_canvas;
         _crc.fill();
         _crc.strokeStyle = _c2;
         _crc.stroke();
+
     }
-    seaworld_canvas.drawAlgeTwoo = drawAlgeTwoo;
-})(seaworld_canvas || (seaworld_canvas = {}));
-//# sourceMappingURL=alge.js.map
+}

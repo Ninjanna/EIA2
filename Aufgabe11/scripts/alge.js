@@ -8,10 +8,10 @@ Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert.
 */
-var seaworld_canvas;
-(function (seaworld_canvas) {
+var seaworldcanvas;
+(function (seaworldcanvas) {
     //draw alge nach rechts geneigt
-    function drawAlgeOnee(_c1, _c2, _x, _y, _crc) {
+    function drawAlgeOne(_c1, _c2, _x, _y, _crc) {
         _crc.beginPath();
         _crc.moveTo(_x, _y);
         _crc.quadraticCurveTo(_x - 40, _y - 185, _x + 20, _y - 230);
@@ -22,9 +22,9 @@ var seaworld_canvas;
         _crc.strokeStyle = _c2;
         _crc.stroke();
     }
-    seaworld_canvas.drawAlgeOnee = drawAlgeOnee;
+    seaworldcanvas.drawAlgeOne = drawAlgeOne;
     //draw alge nach links geneigtS
-    function drawAlgeTwoo(_c1, _c2, _x, _y, _crc) {
+    function drawAlgeTwo(_c1, _c2, _x, _y, _crc) {
         _crc.beginPath();
         _crc.moveTo(_x, _y);
         _crc.quadraticCurveTo(_x - 60, _y - 185, _x - 20, _y - 230);
@@ -35,6 +35,6 @@ var seaworld_canvas;
         _crc.strokeStyle = _c2;
         _crc.stroke();
     }
-    seaworld_canvas.drawAlgeTwoo = drawAlgeTwoo;
-})(seaworld_canvas || (seaworld_canvas = {}));
+    seaworldcanvas.drawAlgeTwo = drawAlgeTwo;
+})(seaworldcanvas || (seaworldcanvas = {}));
 //# sourceMappingURL=alge.js.map

@@ -12,7 +12,7 @@ nicht kopiert und auch nicht diktiert.
 namespace seaworld_canvas {
 
     //draw alge nach rechts geneigt
-    export function drawAlgeOne(_c1: string, _c2: string, _x: number, _y: number, _crc: CanvasRenderingContext2D): void {
+    export function drawAlgeOnee(_c1: string, _c2: string, _x: number, _y: number, _crc: CanvasRenderingContext2D): void {
 
         _crc.beginPath();
         _crc.moveTo(_x, _y);
@@ -28,7 +28,7 @@ namespace seaworld_canvas {
 
 
     //draw alge nach links geneigtS
-    export function drawAlgeTwo(_c1: string, _c2: string, _x: number, _y: number, _crc: CanvasRenderingContext2D): void {
+    export function drawAlgeTwoo(_c1: string, _c2: string, _x: number, _y: number, _crc: CanvasRenderingContext2D): void {
 
         _crc.beginPath();
         _crc.moveTo(_x, _y);

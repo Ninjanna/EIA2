@@ -63,7 +63,7 @@ namespace seaworld_canvas {
             let rndm2: number = Math.floor(Math.random() * colors4fish.length);
             let c1: string = colors4fish[rndm1];
             let c2: string = colors4fish[rndm2];
-            drawFishyOne(x, y, c1, c2, crc);
+            drawFishyOnee(x, y, c1, c2, crc);
         }
 
         //Fish Two
@@ -74,7 +74,7 @@ namespace seaworld_canvas {
             let rndm2: number = Math.floor(Math.random() * colors4fish.length);
             let c1: string = colors4fish[rndm1];
             let c2: string = colors4fish[rndm2];
-            drawFishyTwo(x, y, c1, c2, crc);
+            drawFishyTwoo(x, y, c1, c2, crc);
         }
 
         //Pflanze links

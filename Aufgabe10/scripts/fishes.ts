@@ -12,7 +12,7 @@ nicht kopiert und auch nicht diktiert.
 namespace seaworld_canvas {
 
     // Fish 1
-    export function drawFishyOne(_x: number, _y: number, _c1: string, _c2: string, _crc: CanvasRenderingContext2D): void {
+    export function drawFishyOnee(_x: number, _y: number, _c1: string, _c2: string, _crc: CanvasRenderingContext2D): void {
 
         //Körper
         _crc.beginPath();
@@ -101,7 +101,7 @@ namespace seaworld_canvas {
     }
 
     // Fish 2
-    export function drawFishyTwo(_x: number, _y: number, _c1: string, _c2: string, _crc: CanvasRenderingContext2D): void {
+    export function drawFishyTwoo(_x: number, _y: number, _c1: string, _c2: string, _crc: CanvasRenderingContext2D): void {
 
         //Körper
         _crc.beginPath();

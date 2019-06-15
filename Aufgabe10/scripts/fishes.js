@@ -11,7 +11,7 @@ nicht kopiert und auch nicht diktiert.
 var seaworld_canvas;
 (function (seaworld_canvas) {
     // Fish 1
-    function drawFishyOne(_x, _y, _c1, _c2, _crc) {
+    function drawFishyOnee(_x, _y, _c1, _c2, _crc) {
         //Körper
         _crc.beginPath();
         _crc.moveTo(_x, _y);
@@ -86,9 +86,9 @@ var seaworld_canvas;
         _crc.stroke();
         _crc.fill();
     }
-    seaworld_canvas.drawFishyOne = drawFishyOne;
+    seaworld_canvas.drawFishyOnee = drawFishyOnee;
     // Fish 2
-    function drawFishyTwo(_x, _y, _c1, _c2, _crc) {
+    function drawFishyTwoo(_x, _y, _c1, _c2, _crc) {
         //Körper
         _crc.beginPath();
         _crc.moveTo(_x, _y);
@@ -163,6 +163,6 @@ var seaworld_canvas;
         _crc.stroke();
         _crc.fill();
     }
-    seaworld_canvas.drawFishyTwo = drawFishyTwo;
+    seaworld_canvas.drawFishyTwoo = drawFishyTwoo;
 })(seaworld_canvas || (seaworld_canvas = {}));
 //# sourceMappingURL=fishes.js.map
