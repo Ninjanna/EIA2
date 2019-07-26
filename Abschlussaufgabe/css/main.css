@@ -1,0 +1,24 @@
+/*
+Aufgabe 10: Canvas
+Name: Jeanna Nechypurenko
+Matrikel: 275537
+Datum: 02.06.2019
+
+Hiermit versichere ich, dass ich diesen
+Code selbst geschrieben habe. Er wurde
+nicht kopiert und auch nicht diktiert. 
+*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	width: 100%;
+	background-color: whitesmoke;
+}
+
+canvas {
+	display: block;
+	margin: 1% auto;
+}
