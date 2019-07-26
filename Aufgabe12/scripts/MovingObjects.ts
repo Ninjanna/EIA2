@@ -9,9 +9,9 @@ Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. 
 */
 
-namespace seaworld_inheritance {
+namespace seaworld_inheritance1 {
 
-    export class MovingObjects {
+    export class MovingObjects1 {
 
         x: number;
         y: number;

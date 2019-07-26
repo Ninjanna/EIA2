@@ -19,8 +19,27 @@ namespace seaworld_inheritance {
         }
 
         update(): void {
-            super.move();
+            this.move();
+/*
+            let r: number[] = this.getBoundingRect();
+            crc.beginPath();
+            crc.moveTo(r[0], r[1]);
+            crc.rect(r[0], r[1], r[2], r[3]);
+            crc.strokeStyle = this.c1;
+            crc.lineWidth = 2;
+            crc.stroke();
+*/
+            let x: number = this.x;
+            let y: number = this.y;
+            this.x /= this.scale;
+            this.y /= this.scale;
+
+            crc.scale(this.scale, this.scale);
             this.draw();
+            crc.setTransform(1, 0, 0, 1, 0, 0);
+
+            this.x = x;
+            this.y = y;
         }
 
         draw(): void {

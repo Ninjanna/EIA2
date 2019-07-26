@@ -21,10 +21,18 @@ var seaworld_inheritance;
             this.start = seaworld_inheritance.canvas.width;
             this.c1 = _c1;
             this.c2 = _c2;
+            this.scale = 0.5 + Math.random() * 1.5;
+        }
+        getBoundingRect() {
+            let w = 100 * this.scale;
+            let h = 60 * this.scale;
+            return [this.x, this.y - h / 2, w, h];
         }
         update() {
             this.move();
+            seaworld_inheritance.crc.scale(this.scale, this.scale);
             this.draw();
+            seaworld_inheritance.crc.setTransform(1, 0, 0, 1, 0, 0);
         }
         draw() {
             //Körper

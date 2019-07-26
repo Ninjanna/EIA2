@@ -11,7 +11,7 @@ nicht kopiert und auch nicht diktiert.
 
 namespace seaworld_inheritance {
 
-    export class Foods extends Bubbles {
+    class Foods extends Bubbles {
 
         constructor(_x: number, _y: number, _c1: string) {
             super();

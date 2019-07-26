@@ -9,7 +9,7 @@ Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. 
 */
 
-namespace seaworld_inheritance {
+namespace seaworld_inheritance1 {
 
     window.addEventListener("load", init);
 
@@ -65,7 +65,7 @@ namespace seaworld_inheritance {
         //Fishy1
         for (let i: number = 0; i < fishOneAnzahl; i++) {
             let rndm1: number = Math.floor(Math.random() * colors4fish.length);
-            let rndm2: number = Math.floor(Math.random() * colors4fish.length)
+            let rndm2: number = Math.floor(Math.random() * colors4fish.length);
             let fish1: Fishy1 = new Fishy1(colors4fish[rndm1], colors4fish[rndm2]);
             movingObjects.push(fish1);
         }
@@ -73,7 +73,7 @@ namespace seaworld_inheritance {
         //Fishy2
         for (let i: number = 0; i < fishTwoAnzahl; i++) {
             let rndm1: number = Math.floor(Math.random() * colors4fish.length);
-            let rndm2: number = Math.floor(Math.random() * colors4fish.length)
+            let rndm2: number = Math.floor(Math.random() * colors4fish.length);
             let fish2: Fishy2 = new Fishy2(colors4fish[rndm1], colors4fish[rndm2]);
             movingObjects.push(fish2);
         }

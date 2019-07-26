@@ -11,9 +11,11 @@ nicht kopiert und auch nicht diktiert.
 var seaworld_inheritance;
 (function (seaworld_inheritance) {
     class MovingObjects {
-        constructor() {
-        }
+        constructor() { }
         update() { }
+        getBoundingRect() {
+            return [this.x, this.y, 1, 1];
+        }
     }
     seaworld_inheritance.MovingObjects = MovingObjects;
 })(seaworld_inheritance || (seaworld_inheritance = {}));

@@ -36,6 +36,5 @@ var seaworld_inheritance;
             }
         }
     }
-    seaworld_inheritance.Foods = Foods;
 })(seaworld_inheritance || (seaworld_inheritance = {}));
 //# sourceMappingURL=Foods.js.map

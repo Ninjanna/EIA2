@@ -10,7 +10,7 @@ nicht kopiert und auch nicht diktiert.
 */
 
 
-namespace seaworld_inheritance {
+namespace seaworld_inheritance1 {
 
     export class Fishy2 extends Fishy1 {
 

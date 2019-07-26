@@ -21,11 +21,17 @@ namespace seaworld_inheritance {
         start: number;
         c1: string;
         c2: string;
+        scale: number;
 
         constructor() { }
 
 
         update(): void { }
+
+        getBoundingRect(): number[] {
+            return [this.x, this.y, 1, 1];
+        }
+
 
     }
 }

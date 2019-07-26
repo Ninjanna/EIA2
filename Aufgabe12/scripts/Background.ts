@@ -9,10 +9,10 @@ Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. 
 */
 
-namespace seaworld_inheritance {
+namespace seaworld_inheritance1 {
 
     // Background
-    export function drawBackground(): void {
+    export function drawBackground1(): void {
         drawWaterGradient("#87CEFA", "#087CC4", canvas.width, canvas.height, 300, 1400);
 
         drawBodenHinten("#C88937", 0, 500);
@@ -44,7 +44,7 @@ namespace seaworld_inheritance {
 
 
     // Wasser
-    export function drawWaterGradient(_c1: string, _c2: string, _x: number, _y: number, _r1: number, _r2: number): void {
+    export function drawWaterGradient1(_c1: string, _c2: string, _x: number, _y: number, _r1: number, _r2: number): void {
 
         var gradient: CanvasGradient = crc.createRadialGradient(_x - 700, _y - 50, _r1, _x - 700, _y - 100, _r2);
         gradient.addColorStop(0, _c1);
@@ -55,7 +55,7 @@ namespace seaworld_inheritance {
     }
 
     // Boden vorn
-    export function drawBodenVorne(_c1: string, _x: number, _y: number): void {
+    export function drawBodenVorne1(_c1: string, _x: number, _y: number): void {
 
         crc.beginPath();
         crc.moveTo(_x, _y);
@@ -72,7 +72,7 @@ namespace seaworld_inheritance {
     }
 
     // Boden hinten
-    export function drawBodenHinten(_c1: string, _x: number, _y: number): void {
+    export function drawBodenHinten1(_c1: string, _x: number, _y: number): void {
 
         crc.beginPath();
         crc.moveTo(_x, _y + 70);
@@ -88,7 +88,7 @@ namespace seaworld_inheritance {
     }
 
     //draw alge nach rechts geneigt
-    export function drawAlgeOne(_c1: string, _c2: string, _x: number, _y: number): void {
+    export function drawAlgeOne1(_c1: string, _c2: string, _x: number, _y: number): void {
 
         crc.beginPath();
         crc.moveTo(_x, _y);
@@ -103,7 +103,7 @@ namespace seaworld_inheritance {
     }
 
     //draw alge nach links geneigtS
-    export function drawAlgeTwo(_c1: string, _c2: string, _x: number, _y: number): void {
+    export function drawAlgeTwo1(_c1: string, _c2: string, _x: number, _y: number): void {
 
         crc.beginPath();
         crc.moveTo(_x, _y);

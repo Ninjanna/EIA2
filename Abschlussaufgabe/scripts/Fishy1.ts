@@ -24,11 +24,21 @@ namespace seaworld_inheritance {
             this.start = canvas.width;
             this.c1 = _c1;
             this.c2 = _c2;
+            this.scale = 0.5 + Math.random() * 1.5;
         }
+
+        getBoundingRect(): number[] {
+            let w: number = 100 * this.scale;
+            let h: number = 60 * this.scale;
+            return [this.x, this.y - h / 2, w, h];
+        }
+
 
         update(): void {
             this.move();
+            crc.scale(this.scale, this.scale);
             this.draw();
+            crc.setTransform(1, 0, 0, 1, 0, 0);
         }
 
         draw(): void {
@@ -114,7 +124,7 @@ namespace seaworld_inheritance {
             crc.fillStyle = "LightSkyBlue";
             crc.stroke();
             crc.fill();
-        }
+       }
 
 
 

@@ -19,6 +19,7 @@ namespace seaworld_inheritance {
     let fps: number = 30;
 
     let movingObjects: MovingObjects[] = [];
+    export let playerFish: PlayerFish;
 
     let colors4fish: string[] = [
         "MediumOrchid ",
@@ -46,14 +47,20 @@ namespace seaworld_inheritance {
     let fishTwoAnzahl: number = 25;
     let bubblesAnzahl: number = 50;
 
+    function spawnFish(): MovingObjects {
+        let rndm1: number = Math.floor(Math.random() * colors4fish.length);
+        let rndm2: number = Math.floor(Math.random() * colors4fish.length);
+        return new Fishy2(colors4fish[rndm1], colors4fish[rndm2]);
+    }
 
     function init(): void {
-        console.log("hallo ich arbeite");
+        console.log("Hallo ich Arbeite");
         canvas = document.getElementsByTagName("canvas")[0];
         crc = canvas.getContext("2d");
 
         //EventListener für Futter
         canvas.addEventListener("click", mahlzeit);
+        document.addEventListener("keydown", handleKeydown);
 
         crc.strokeStyle = "black";
         crc.strokeRect(0, 0, canvas.width, canvas.height);
@@ -64,19 +71,11 @@ namespace seaworld_inheritance {
 
         //Fishy1
         for (let i: number = 0; i < fishOneAnzahl; i++) {
-            let rndm1: number = Math.floor(Math.random() * colors4fish.length);
-            let rndm2: number = Math.floor(Math.random() * colors4fish.length)
-            let fish1: Fishy1 = new Fishy1(colors4fish[rndm1], colors4fish[rndm2]);
-            movingObjects.push(fish1);
-        }
-
-        //Fishy2
-        for (let i: number = 0; i < fishTwoAnzahl; i++) {
-            let rndm1: number = Math.floor(Math.random() * colors4fish.length);
-            let rndm2: number = Math.floor(Math.random() * colors4fish.length)
-            let fish2: Fishy2 = new Fishy2(colors4fish[rndm1], colors4fish[rndm2]);
+            let fish2: MovingObjects = spawnFish();
             movingObjects.push(fish2);
         }
+
+        playerFish = new PlayerFish("black");
 
         //Bubbles
         for (let i: number = 0; i < bubblesAnzahl; i++) {
@@ -88,15 +87,55 @@ namespace seaworld_inheritance {
 
     }
 
+    function intersectRect(a: number[], b: number[]): boolean {
+        let aLeft: number = a[0];
+        let aTop: number = a[1];
+        let bLeft: number = b[0];
+        let bTop: number = b[1];
+        let aRight: number = aLeft + a[2];
+        let bRight: number = bLeft + b[2];
+        let aBottom: number = aTop + a[3];
+        let bBottom: number = bTop + b[3];
+        return Math.max(aLeft, bLeft) < Math.min(aRight, bRight) &&
+                Math.max(aTop, bTop) < Math.min(aBottom, bBottom);
+      }
+
     function update(): void {
         window.setTimeout(update, 1000 / fps);
 
         crc.clearRect(0, 0, crc.canvas.width, crc.canvas.height);
         crc.putImageData(imageData, 0, 0);
 
+        let playerFishRect: number[] = playerFish.getBoundingRect();
+
+        for (let i: number = 0; i < movingObjects.length; i++) {
+            //console.log(Math.abs(movingObjects[i].x - playerFish.x), Math.abs(movingObjects[i].y - playerFish.y), movingObjects[i].scale);
+            //console.log(playerFish.x, playerFish.y, playerFish.scale);
+            if (!(movingObjects[i].scale == null)) {
+                let fishRect: number[] = movingObjects[i].getBoundingRect();   
+                //console.log(fishRect, " vs. ", playerFishRect);
+                if (intersectRect(playerFishRect, fishRect)) {
+                    if (movingObjects[i].scale > playerFish.scale) {
+                        //console.log("Hit ", movingObjects[i].scale, " => Dead");
+                        playerFish = new PlayerFish("black");
+                    }
+                    else {
+                        console.log("Eat ", movingObjects[i].scale, " => Growing to ", playerFish.scale + 0.01);
+                        movingObjects[i] = spawnFish(); 
+                        playerFish.scale += 0.01;
+                        if (playerFish.scale > 2) {
+                            playerFish.scale = 2;
+                        }
+                    }
+                }
+            }
+        }
+
+
         for (let i: number = 0; i < movingObjects.length; i++) {
             movingObjects[i].update();
         }
+        playerFish.update();
 
     }
 
@@ -112,6 +151,29 @@ namespace seaworld_inheritance {
             movingObjects.push(food);
         }
 
+    }
+
+    function handleKeydown(_event: KeyboardEvent): void {
+        if (_event.keyCode === 38) {
+            // up arrow
+            playerFish.dx = 0;
+            playerFish.dy = -16;
+        }
+        else if (_event.keyCode === 40) {
+            // down arrow
+            playerFish.dx = 0;
+            playerFish.dy = 16;
+        }
+        else if (_event.keyCode === 37) {
+           // left arrow
+           playerFish.dx = -16;
+           playerFish.dy = 0;
+        }
+        else if (_event.keyCode === 39) {
+           // right arrow
+           playerFish.dx = +16;
+           playerFish.dy = 0;
+        }
     }
 
 }

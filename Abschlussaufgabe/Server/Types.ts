@@ -1,4 +1,4 @@
-interface AssocStringString1 {
+interface AssocStringString {
     [key: string]: string;
 }
 

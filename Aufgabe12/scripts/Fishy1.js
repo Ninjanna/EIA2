@@ -108,6 +108,5 @@ var seaworld_inheritance;
             }
         }
     }
-    seaworld_inheritance.Fishy1 = Fishy1;
 })(seaworld_inheritance || (seaworld_inheritance = {}));
 //# sourceMappingURL=Fishy1.js.map

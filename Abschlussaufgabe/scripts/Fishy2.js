@@ -15,8 +15,25 @@ var seaworld_inheritance;
             super(_c1, _c2);
         }
         update() {
-            super.move();
+            this.move();
+            /*
+                        let r: number[] = this.getBoundingRect();
+                        crc.beginPath();
+                        crc.moveTo(r[0], r[1]);
+                        crc.rect(r[0], r[1], r[2], r[3]);
+                        crc.strokeStyle = this.c1;
+                        crc.lineWidth = 2;
+                        crc.stroke();
+            */
+            let x = this.x;
+            let y = this.y;
+            this.x /= this.scale;
+            this.y /= this.scale;
+            seaworld_inheritance.crc.scale(this.scale, this.scale);
             this.draw();
+            seaworld_inheritance.crc.setTransform(1, 0, 0, 1, 0, 0);
+            this.x = x;
+            this.y = y;
         }
         draw() {
             //Körper

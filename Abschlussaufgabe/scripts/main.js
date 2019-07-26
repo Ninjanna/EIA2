@@ -36,12 +36,18 @@ var seaworld_inheritance;
     let fishOneAnzahl = 25;
     let fishTwoAnzahl = 25;
     let bubblesAnzahl = 50;
+    function spawnFish() {
+        let rndm1 = Math.floor(Math.random() * colors4fish.length);
+        let rndm2 = Math.floor(Math.random() * colors4fish.length);
+        return new seaworld_inheritance.Fishy2(colors4fish[rndm1], colors4fish[rndm2]);
+    }
     function init() {
-        console.log("hallo ich arbeite");
+        console.log("Hallo ich Arbeite");
         seaworld_inheritance.canvas = document.getElementsByTagName("canvas")[0];
         seaworld_inheritance.crc = seaworld_inheritance.canvas.getContext("2d");
         //EventListener für Futter
         seaworld_inheritance.canvas.addEventListener("click", mahlzeit);
+        document.addEventListener("keydown", handleKeydown);
         seaworld_inheritance.crc.strokeStyle = "black";
         seaworld_inheritance.crc.strokeRect(0, 0, seaworld_inheritance.canvas.width, seaworld_inheritance.canvas.height);
         //Background
@@ -49,18 +55,10 @@ var seaworld_inheritance;
         imageData = seaworld_inheritance.crc.getImageData(0, 0, seaworld_inheritance.canvas.width, seaworld_inheritance.canvas.height);
         //Fishy1
         for (let i = 0; i < fishOneAnzahl; i++) {
-            let rndm1 = Math.floor(Math.random() * colors4fish.length);
-            let rndm2 = Math.floor(Math.random() * colors4fish.length);
-            let fish1 = new seaworld_inheritance.Fishy1(colors4fish[rndm1], colors4fish[rndm2]);
-            movingObjects.push(fish1);
-        }
-        //Fishy2
-        for (let i = 0; i < fishTwoAnzahl; i++) {
-            let rndm1 = Math.floor(Math.random() * colors4fish.length);
-            let rndm2 = Math.floor(Math.random() * colors4fish.length);
-            let fish2 = new seaworld_inheritance.Fishy2(colors4fish[rndm1], colors4fish[rndm2]);
+            let fish2 = spawnFish();
             movingObjects.push(fish2);
         }
+        seaworld_inheritance.playerFish = new seaworld_inheritance.PlayerFish("black");
         //Bubbles
         for (let i = 0; i < bubblesAnzahl; i++) {
             let bubble = new seaworld_inheritance.Bubbles();
@@ -68,13 +66,49 @@ var seaworld_inheritance;
         }
         update();
     }
+    function intersectRect(a, b) {
+        let aLeft = a[0];
+        let aTop = a[1];
+        let bLeft = b[0];
+        let bTop = b[1];
+        let aRight = aLeft + a[2];
+        let bRight = bLeft + b[2];
+        let aBottom = aTop + a[3];
+        let bBottom = bTop + b[3];
+        return Math.max(aLeft, bLeft) < Math.min(aRight, bRight) &&
+            Math.max(aTop, bTop) < Math.min(aBottom, bBottom);
+    }
     function update() {
         window.setTimeout(update, 1000 / fps);
         seaworld_inheritance.crc.clearRect(0, 0, seaworld_inheritance.crc.canvas.width, seaworld_inheritance.crc.canvas.height);
         seaworld_inheritance.crc.putImageData(imageData, 0, 0);
+        let playerFishRect = seaworld_inheritance.playerFish.getBoundingRect();
+        for (let i = 0; i < movingObjects.length; i++) {
+            //console.log(Math.abs(movingObjects[i].x - playerFish.x), Math.abs(movingObjects[i].y - playerFish.y), movingObjects[i].scale);
+            //console.log(playerFish.x, playerFish.y, playerFish.scale);
+            if (!(movingObjects[i].scale == null)) {
+                let fishRect = movingObjects[i].getBoundingRect();
+                //console.log(fishRect, " vs. ", playerFishRect);
+                if (intersectRect(playerFishRect, fishRect)) {
+                    if (movingObjects[i].scale > seaworld_inheritance.playerFish.scale) {
+                        //console.log("Hit ", movingObjects[i].scale, " => Dead");
+                        seaworld_inheritance.playerFish = new seaworld_inheritance.PlayerFish("black");
+                    }
+                    else {
+                        console.log("Eat ", movingObjects[i].scale, " => Growing to ", seaworld_inheritance.playerFish.scale + 0.01);
+                        movingObjects[i] = spawnFish();
+                        seaworld_inheritance.playerFish.scale += 0.01;
+                        if (seaworld_inheritance.playerFish.scale > 2) {
+                            seaworld_inheritance.playerFish.scale = 2;
+                        }
+                    }
+                }
+            }
+        }
         for (let i = 0; i < movingObjects.length; i++) {
             movingObjects[i].update();
         }
+        seaworld_inheritance.playerFish.update();
     }
     function mahlzeit(_event) {
         let x = _event.clientX - 17;
@@ -84,6 +118,28 @@ var seaworld_inheritance;
             let rndm1 = Math.floor(Math.random() * colors4food.length);
             let food = new seaworld_inheritance.Foods(x, y, colors4food[rndm1]);
             movingObjects.push(food);
+        }
+    }
+    function handleKeydown(_event) {
+        if (_event.keyCode === 38) {
+            // up arrow
+            seaworld_inheritance.playerFish.dx = 0;
+            seaworld_inheritance.playerFish.dy = -16;
+        }
+        else if (_event.keyCode === 40) {
+            // down arrow
+            seaworld_inheritance.playerFish.dx = 0;
+            seaworld_inheritance.playerFish.dy = 16;
+        }
+        else if (_event.keyCode === 37) {
+            // left arrow
+            seaworld_inheritance.playerFish.dx = -16;
+            seaworld_inheritance.playerFish.dy = 0;
+        }
+        else if (_event.keyCode === 39) {
+            // right arrow
+            seaworld_inheritance.playerFish.dx = +16;
+            seaworld_inheritance.playerFish.dy = 0;
         }
     }
 })(seaworld_inheritance || (seaworld_inheritance = {}));
