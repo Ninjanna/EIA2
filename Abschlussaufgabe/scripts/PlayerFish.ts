@@ -1,5 +1,5 @@
 /*
-Aufgabe 12: Canvas Vererbung&Polymorphie
+
 Name: Jeanna Nechypurenko
 Matrikel: 275537
 Datum: 23.06.2019
