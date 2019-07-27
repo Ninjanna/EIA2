@@ -38,25 +38,16 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
             Database.findByName(query["name"], findCallback);
             break;
 
-        case "insertScore":
+        case "updateScore":
             let score: HighScoreData = {
                 name: query["name"],
                 highscore: parseInt(query["score"])
             };
             console.log(JSON.stringify(score));
-            Database.insertScore(score);
+            Database.updateScore(score);
             respond(_response, "storing data");
             break;
 
-        case "updateScore":
-                let highscore: HighScoreData = {
-                    name: query["name"],
-                    highscore: parseInt(query["score"])
-                };
-                console.log(JSON.stringify(highscore));
-                Database.insertScore(highscore);
-                respond(_response, "storing data");
-                break;
         /*
         case "insert":
             let student: StudentData = {

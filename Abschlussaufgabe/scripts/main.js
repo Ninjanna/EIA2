@@ -104,10 +104,20 @@ var seaworld_inheritance;
                 if (intersectRect(playerFishRect, fishRect)) {
                     if (movingObjects[i].scale > seaworld_inheritance.playerFish.scale) {
                         //console.log("Hit ", movingObjects[i].scale, " => Dead");
-                        if (nameElement.value.length > 0) {
+                        //if (nameElement.value.length > 0) {
+                        if (nameElement.value == "zxcv") {
                             //DBClient.updatePlayerScore(nameElement.value, currentScore);
                             if (highScore == 0) {
-                                DBClient.findByName(nameElement.value);
+                                highScore = parseInt(highScoreElement.innerText);
+                                if (highScore == 0) {
+                                    DBClient.findByName(nameElement.value);
+                                }
+                                //console.log("HS: ", highScore);
+                                if (currentScore > highScore) {
+                                    highScore = currentScore;
+                                    highScoreElement.innerText = String(highScore);
+                                    DBClient.updatePlayerScore(nameElement.value, highScore);
+                                }
                             }
                         }
                         currentScore = 0;

@@ -46,11 +46,12 @@ function findByName(name, _callback) {
     }
 }
 exports.findByName = findByName;
-function insertScore(_doc) {
+function updateScore(_doc) {
     // try insertion then activate callback "handleInsert"
-    highScores.insertOne(_doc, handleInsert);
+    //highScores.update({name: _doc.name}, {$set: {highscore: _doc.highscore}});
+    highScores.update({ name: _doc.name }, { name: _doc.name, highscore: _doc.highscore }, { upsert: true, w: 1 });
 }
-exports.insertScore = insertScore;
+exports.updateScore = updateScore;
 function insert(_doc) {
     // try insertion then activate callback "handleInsert"
     students.insertOne(_doc, handleInsert);

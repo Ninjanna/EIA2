@@ -28,22 +28,13 @@ function handleRequest(_request, _response) {
         case "findByName":
             Database.findByName(query["name"], findCallback);
             break;
-        case "insertScore":
+        case "updateScore":
             let score = {
                 name: query["name"],
                 highscore: parseInt(query["score"])
             };
             console.log(JSON.stringify(score));
-            Database.insertScore(score);
-            respond(_response, "storing data");
-            break;
-        case "updateScore":
-            let highscore = {
-                name: query["name"],
-                highscore: parseInt(query["score"])
-            };
-            console.log(JSON.stringify(highscore));
-            Database.insertScore(highscore);
+            Database.updateScore(score);
             respond(_response, "storing data");
             break;
         /*

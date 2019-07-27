@@ -45,9 +45,11 @@ var DBClient;
     function handleFindResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            console.log("Raw response: ", xhr.response);
-            let responseAsJson = JSON.parse(xhr.response);
-            console.log("As JSON: ", responseAsJson);
+            //console.log("Raw response: ", xhr.response);
+            let hsdata = (JSON.parse(xhr.response)[0]);
+            //console.log(hsdata);
+            let highScoreElement = document.getElementById("highscore");
+            highScoreElement.innerText = String(hsdata.highscore);
         }
     }
     function checkResponseError(_event) {

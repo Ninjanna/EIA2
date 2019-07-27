@@ -52,9 +52,10 @@ export function findByName(name: string, _callback: Function): void {
     }
 }
 
-export function insertScore(_doc: HighScoreData): void {
+export function updateScore(_doc: HighScoreData): void {
     // try insertion then activate callback "handleInsert"
-    highScores.insertOne(_doc, handleInsert);
+    //highScores.update({name: _doc.name}, {$set: {highscore: _doc.highscore}});
+    highScores.update({name: _doc.name}, {name: _doc.name, highscore: _doc.highscore}, {upsert: true, w: 1});
 }
 
 export function insert(_doc: StudentData): void {

@@ -50,9 +50,11 @@ namespace DBClient {
     function handleFindResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            console.log("Raw response: ", xhr.response);
-            let responseAsJson: JSON = JSON.parse(xhr.response);
-            console.log("As JSON: ", responseAsJson);
+            //console.log("Raw response: ", xhr.response);
+            let hsdata: HighScoreData = <HighScoreData>(JSON.parse(xhr.response)[0]);
+            //console.log(hsdata);
+            let highScoreElement: HTMLElement = document.getElementById("highscore");
+            highScoreElement.innerText = String(hsdata.highscore);
         }
     }
 
