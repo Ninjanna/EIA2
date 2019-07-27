@@ -132,16 +132,15 @@ namespace seaworld_inheritance {
                 if (intersectRect(playerFishRect, fishRect)) {
                     if (movingObjects[i].scale > playerFish.scale) {
                         //console.log("Hit ", movingObjects[i].scale, " => Dead");
-                        //if (nameElement.value.length > 0) {
-                        if (nameElement.value == "zxcv") {
-                            //DBClient.updatePlayerScore(nameElement.value, currentScore);
+                        if (nameElement.value.length > 0) {
                             if (highScore == 0) {
                                 highScore = parseInt(highScoreElement.innerText);
                                 if (highScore == 0) {
                                     DBClient.findByName(nameElement.value);
                                 }
-                                //console.log("HS: ", highScore);
+                                
                                 if (currentScore > highScore) {
+                                    console.log("Saving high score ", highScore, " for ", nameElement.value);
                                     highScore = currentScore;
                                     highScoreElement.innerText = String(highScore);
                                     DBClient.updatePlayerScore(nameElement.value, highScore);

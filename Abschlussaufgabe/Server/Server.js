@@ -37,6 +37,9 @@ function handleRequest(_request, _response) {
             Database.updateScore(score);
             respond(_response, "storing data");
             break;
+        case "highestScores":
+            Database.highestScore(findCallback);
+            break;
         /*
         case "insert":
             let student: StudentData = {

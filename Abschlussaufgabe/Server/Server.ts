@@ -48,6 +48,10 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
             respond(_response, "storing data");
             break;
 
+        case "highestScores":
+            Database.highestScore(findCallback);
+            break;
+
         /*
         case "insert":
             let student: StudentData = {

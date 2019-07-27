@@ -46,6 +46,22 @@ function findByName(name, _callback) {
     }
 }
 exports.findByName = findByName;
+function highestScore(_callback) {
+    // cursor points to the retreived set of documents in memory
+    var cursor = highScores.find().sort({ highscore: -1 }).limit(5);
+    // try to convert to array, then activate callback "prepareAnswer"
+    cursor.toArray(prepareAnswer);
+    // toArray-handler receives two standard parameters, an error object and the array
+    // implemented as inner function, so _callback is in scope
+    function prepareAnswer(_e, scoreArray) {
+        if (_e)
+            _callback("Error" + _e);
+        else
+            // stringify creates a json-string, passed it back to _callback
+            _callback(JSON.stringify(scoreArray));
+    }
+}
+exports.highestScore = highestScore;
 function updateScore(_doc) {
     // try insertion then activate callback "handleInsert"
     //highScores.update({name: _doc.name}, {$set: {highscore: _doc.highscore}});

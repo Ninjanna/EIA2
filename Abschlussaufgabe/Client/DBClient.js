@@ -39,7 +39,7 @@ var DBClient;
     function handleInsertResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            alert(xhr.response);
+            console.log(xhr.response);
         }
     }
     function handleFindResponse(_event) {
@@ -52,10 +52,10 @@ var DBClient;
             highScoreElement.innerText = String(hsdata.highscore);
         }
     }
-    function checkResponseError(_event) {
+    function handleUpdateResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            alert(xhr.response);
+            console.log(xhr.response);
         }
     }
     function updatePlayerScore(name, score) {
@@ -63,7 +63,7 @@ var DBClient;
             let query = "command=updateScore";
             query += "&name=" + name;
             query += "&score=" + String(score);
-            sendRequest(query, checkResponseError);
+            sendRequest(query, handleUpdateResponse);
         }
     }
     DBClient.updatePlayerScore = updatePlayerScore;

@@ -43,7 +43,7 @@ namespace DBClient {
     function handleInsertResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            alert(xhr.response);
+            console.log(xhr.response);
         }
     }
 
@@ -58,10 +58,10 @@ namespace DBClient {
         }
     }
 
-    function checkResponseError(_event: ProgressEvent): void {
+    function handleUpdateResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            alert(xhr.response);
+            console.log(xhr.response);
         }
     }
 
@@ -71,7 +71,7 @@ namespace DBClient {
             let query: string = "command=updateScore";
             query += "&name=" + name;
             query += "&score=" + String(score);
-            sendRequest(query, checkResponseError);
+            sendRequest(query, handleUpdateResponse);
         }
     }
 
