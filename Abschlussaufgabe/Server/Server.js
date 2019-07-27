@@ -40,24 +40,6 @@ function handleRequest(_request, _response) {
         case "highestScores":
             Database.highestScore(findCallback);
             break;
-        /*
-        case "insert":
-            let student: StudentData = {
-                name: query["name"],
-                firstname: query["firstname"],
-                matrikel: parseInt(query["matrikel"])
-            };
-            console.log(JSON.stringify(student))
-            Database.insert(student);
-            respond(_response, "storing data");
-            break;
-        case "findByMatrikel": //der case mach nen neuen befehl möglich: suchen
-            Database.findByMatrikel(parseInt(query["matrikel"]), findCallback);
-            break;
-        case "refresh":
-            Database.findAll(findCallback);
-            break;
-        */
         default:
             respond(_response, JSON.stringify({ status: "unknown command", "cmd": command }));
             break;

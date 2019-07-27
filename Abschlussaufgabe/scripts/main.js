@@ -111,8 +111,10 @@ var seaworld_inheritance;
                                 if (highScore == 0) {
                                     DBClient.findByName(nameElement.value);
                                 }
+                            }
+                            else {
                                 if (currentScore > highScore) {
-                                    console.log("Saving high score ", highScore, " for ", nameElement.value);
+                                    console.log("Saving high score ", currentScore, " for ", nameElement.value);
                                     highScore = currentScore;
                                     highScoreElement.innerText = String(highScore);
                                     DBClient.updatePlayerScore(nameElement.value, highScore);
