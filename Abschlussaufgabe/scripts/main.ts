@@ -98,6 +98,8 @@ namespace seaworld_inheritance {
             movingObjects.push(bubble);
         }
 
+        DBClient.topScores();
+
         update();
 
     }
@@ -144,6 +146,7 @@ namespace seaworld_inheritance {
                                     highScore = currentScore;
                                     highScoreElement.innerText = String(highScore);
                                     DBClient.updatePlayerScore(nameElement.value, highScore);
+                                    DBClient.topScores();
                                 }
                             } 
                         }

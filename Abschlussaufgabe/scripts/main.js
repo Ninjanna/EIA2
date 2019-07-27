@@ -76,6 +76,7 @@ var seaworld_inheritance;
             let bubble = new seaworld_inheritance.Bubbles();
             movingObjects.push(bubble);
         }
+        DBClient.topScores();
         update();
     }
     function intersectRect(a, b) {
@@ -115,6 +116,7 @@ var seaworld_inheritance;
                                     highScore = currentScore;
                                     highScoreElement.innerText = String(highScore);
                                     DBClient.updatePlayerScore(nameElement.value, highScore);
+                                    DBClient.topScores();
                                 }
                             }
                         }

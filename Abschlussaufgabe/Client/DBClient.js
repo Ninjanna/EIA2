@@ -52,6 +52,23 @@ var DBClient;
             highScoreElement.innerText = String(hsdata.highscore);
         }
     }
+    function handleTopScoresResponse(_event) {
+        let xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            //console.log("Raw response: ", xhr.response);
+            let topscores = JSON.parse(xhr.response);
+            //console.log(hsdata);
+            let topXElement = document.getElementById("topx");
+            let s = "";
+            for (var p of topscores) {
+                s += " | ";
+                s += p.name;
+                s += ": ";
+                s += p.highscore;
+            }
+            topXElement.innerText = s;
+        }
+    }
     function handleUpdateResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
@@ -73,5 +90,10 @@ var DBClient;
         sendRequest(query, handleFindResponse);
     }
     DBClient.findByName = findByName;
+    function topScores() {
+        let query = "command=highestScores";
+        sendRequest(query, handleTopScoresResponse);
+    }
+    DBClient.topScores = topScores;
 })(DBClient || (DBClient = {}));
 //# sourceMappingURL=DBClient.js.map

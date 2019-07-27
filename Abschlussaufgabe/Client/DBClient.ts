@@ -58,6 +58,25 @@ namespace DBClient {
         }
     }
 
+    function handleTopScoresResponse(_event: ProgressEvent): void {
+        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            //console.log("Raw response: ", xhr.response);
+            let topscores = JSON.parse(xhr.response);
+            //console.log(hsdata);
+            let topXElement: HTMLElement = document.getElementById("topx");
+            let s: string = "";
+            for (var p of topscores) {
+                s += " | ";
+                s += p.name;
+                s += ": ";
+                s += p.highscore;
+            }
+            topXElement.innerText = s;
+        }
+    }
+
+
     function handleUpdateResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
@@ -80,5 +99,13 @@ namespace DBClient {
         query += "&name=" + _name;
         sendRequest(query, handleFindResponse);
     }
+
+    
+
+    export function topScores(): void {
+        let query: string = "command=highestScores";
+        sendRequest(query, handleTopScoresResponse);
+    }
+
 
 }
