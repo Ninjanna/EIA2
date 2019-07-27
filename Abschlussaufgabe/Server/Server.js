@@ -25,13 +25,35 @@ function handleRequest(_request, _response) {
     let query = Url.parse(_request.url, true).query;
     let command = query["command"];
     switch (command) {
+        case "findByName":
+            Database.findByName(query["name"], findCallback);
+            break;
+        case "insertScore":
+            let score = {
+                name: query["name"],
+                highscore: parseInt(query["score"])
+            };
+            console.log(JSON.stringify(score));
+            Database.insertScore(score);
+            respond(_response, "storing data");
+            break;
+        case "updateScore":
+            let highscore = {
+                name: query["name"],
+                highscore: parseInt(query["score"])
+            };
+            console.log(JSON.stringify(highscore));
+            Database.insertScore(highscore);
+            respond(_response, "storing data");
+            break;
+        /*
         case "insert":
-            let student = {
+            let student: StudentData = {
                 name: query["name"],
                 firstname: query["firstname"],
                 matrikel: parseInt(query["matrikel"])
             };
-            console.log(JSON.stringify(student));
+            console.log(JSON.stringify(student))
             Database.insert(student);
             respond(_response, "storing data");
             break;
@@ -41,6 +63,7 @@ function handleRequest(_request, _response) {
         case "refresh":
             Database.findAll(findCallback);
             break;
+        */
         default:
             respond(_response, "unknown command: " + command);
             break;

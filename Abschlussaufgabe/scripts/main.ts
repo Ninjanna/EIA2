@@ -47,6 +47,12 @@ namespace seaworld_inheritance {
     let fishTwoAnzahl: number = 25;
     let bubblesAnzahl: number = 50;
 
+    let currentScore: number = 0;
+    let highScore: number = 0;
+    let highScoreElement: HTMLElement;
+    let scoreElement: HTMLElement;
+    let nameElement: HTMLInputElement;
+
     function spawnFish(): MovingObjects {
         let rndm1: number = Math.floor(Math.random() * colors4fish.length);
         let rndm2: number = Math.floor(Math.random() * colors4fish.length);
@@ -54,9 +60,18 @@ namespace seaworld_inheritance {
     }
 
     function init(): void {
-        console.log("Hallo ich Arbeite");
+        console.log("Hallo i bims");
         canvas = document.getElementsByTagName("canvas")[0];
         crc = canvas.getContext("2d");
+
+        currentScore = 0;
+        highScore = 0;
+        highScoreElement = document.getElementById("highscore");
+        highScoreElement.innerText = String(highScore);
+        nameElement = <HTMLInputElement>document.getElementById("name");
+
+        scoreElement = document.getElementById("score");
+        scoreElement.innerText = String(currentScore);
 
         //EventListener für Futter
         canvas.addEventListener("click", mahlzeit);
@@ -117,12 +132,26 @@ namespace seaworld_inheritance {
                 if (intersectRect(playerFishRect, fishRect)) {
                     if (movingObjects[i].scale > playerFish.scale) {
                         //console.log("Hit ", movingObjects[i].scale, " => Dead");
+                        if (nameElement.value.length > 0) {
+                            //DBClient.updatePlayerScore(nameElement.value, currentScore);
+                            if (highScore == 0) {
+                                DBClient.findByName(nameElement.value);
+                            } 
+                        }
+
+                        currentScore = 0;
+                        scoreElement.innerText = String(currentScore);
+
+                        
+
                         playerFish = new PlayerFish("black");
                     }
                     else {
-                        console.log("Eat ", movingObjects[i].scale, " => Growing to ", playerFish.scale + 0.01);
+                        //console.log("Eat ", movingObjects[i].scale, " => Growing to ", playerFish.scale + 0.01);
+                        currentScore += 1;
+                        scoreElement.innerText = String(currentScore);
                         movingObjects[i] = spawnFish(); 
-                        playerFish.scale += 0.01;
+                        playerFish.scale += 0.01;                        
                         if (playerFish.scale > 2) {
                             playerFish.scale = 2;
                         }

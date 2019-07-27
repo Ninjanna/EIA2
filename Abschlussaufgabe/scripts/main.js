@@ -36,15 +36,27 @@ var seaworld_inheritance;
     let fishOneAnzahl = 25;
     let fishTwoAnzahl = 25;
     let bubblesAnzahl = 50;
+    let currentScore = 0;
+    let highScore = 0;
+    let highScoreElement;
+    let scoreElement;
+    let nameElement;
     function spawnFish() {
         let rndm1 = Math.floor(Math.random() * colors4fish.length);
         let rndm2 = Math.floor(Math.random() * colors4fish.length);
         return new seaworld_inheritance.Fishy2(colors4fish[rndm1], colors4fish[rndm2]);
     }
     function init() {
-        console.log("Hallo ich Arbeite");
+        console.log("Hallo i bims");
         seaworld_inheritance.canvas = document.getElementsByTagName("canvas")[0];
         seaworld_inheritance.crc = seaworld_inheritance.canvas.getContext("2d");
+        currentScore = 0;
+        highScore = 0;
+        highScoreElement = document.getElementById("highscore");
+        highScoreElement.innerText = String(highScore);
+        nameElement = document.getElementById("name");
+        scoreElement = document.getElementById("score");
+        scoreElement.innerText = String(currentScore);
         //EventListener für Futter
         seaworld_inheritance.canvas.addEventListener("click", mahlzeit);
         document.addEventListener("keydown", handleKeydown);
@@ -92,10 +104,20 @@ var seaworld_inheritance;
                 if (intersectRect(playerFishRect, fishRect)) {
                     if (movingObjects[i].scale > seaworld_inheritance.playerFish.scale) {
                         //console.log("Hit ", movingObjects[i].scale, " => Dead");
+                        if (nameElement.value.length > 0) {
+                            //DBClient.updatePlayerScore(nameElement.value, currentScore);
+                            if (highScore == 0) {
+                                DBClient.findByName(nameElement.value);
+                            }
+                        }
+                        currentScore = 0;
+                        scoreElement.innerText = String(currentScore);
                         seaworld_inheritance.playerFish = new seaworld_inheritance.PlayerFish("black");
                     }
                     else {
-                        console.log("Eat ", movingObjects[i].scale, " => Growing to ", seaworld_inheritance.playerFish.scale + 0.01);
+                        //console.log("Eat ", movingObjects[i].scale, " => Growing to ", playerFish.scale + 0.01);
+                        currentScore += 1;
+                        scoreElement.innerText = String(currentScore);
                         movingObjects[i] = spawnFish();
                         seaworld_inheritance.playerFish.scale += 0.01;
                         if (seaworld_inheritance.playerFish.scale > 2) {

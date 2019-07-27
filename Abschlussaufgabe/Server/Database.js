@@ -11,6 +11,7 @@ let databaseURL = "mongodb://localhost:27017";
 let databaseName = "eia2A9";
 let db;
 let students;
+let highScores;
 // running on heroku?
 //if (process.env.NODE_ENV == "production") {
 databaseURL = "mongodb+srv://ninjanna:power123@cluster0-wbyyo.mongodb.net/test";
@@ -26,8 +27,30 @@ function handleConnect(_e, _client) {
         console.log("Connected to database!");
         db = _client.db(databaseName);
         students = db.collection("students");
+        highScores = db.collection("highscores");
     }
 }
+function findByName(name, _callback) {
+    // cursor points to the retreived set of documents in memory
+    var cursor = highScores.find({ name: name });
+    // try to convert to array, then activate callback "prepareAnswer"
+    cursor.toArray(prepareAnswer);
+    // toArray-handler receives two standard parameters, an error object and the array
+    // implemented as inner function, so _callback is in scope
+    function prepareAnswer(_e, scoreArray) {
+        if (_e)
+            _callback("Error" + _e);
+        else
+            // stringify creates a json-string, passed it back to _callback
+            _callback(JSON.stringify(scoreArray));
+    }
+}
+exports.findByName = findByName;
+function insertScore(_doc) {
+    // try insertion then activate callback "handleInsert"
+    highScores.insertOne(_doc, handleInsert);
+}
+exports.insertScore = insertScore;
 function insert(_doc) {
     // try insertion then activate callback "handleInsert"
     students.insertOne(_doc, handleInsert);

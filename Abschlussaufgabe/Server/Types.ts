@@ -7,3 +7,8 @@ interface StudentData {
     firstname: string;
     matrikel: number;
 }
+
+interface HighScoreData {
+    name: string;
+    highscore: number;
+}

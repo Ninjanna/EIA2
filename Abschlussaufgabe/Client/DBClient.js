@@ -3,11 +3,11 @@ var DBClient;
     window.addEventListener("load", init);
     let serverAddress = "https://studenten.herokuapp.com/";
     function init(_event) {
-        console.log("Init");
-        let insertButton = document.getElementById("insert");
-        let refreshButton = document.getElementById("refresh");
-        insertButton.addEventListener("click", insert);
-        refreshButton.addEventListener("click", refresh);
+        console.log("DBClient initialized");
+        //let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
+        //let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
+        //insertButton.addEventListener("click", insert);
+        //refreshButton.addEventListener("click", refresh);
     }
     function insert(_event) {
         let inputs = document.getElementsByTagName("input");
@@ -19,7 +19,7 @@ var DBClient;
         sendRequest(query, handleInsertResponse);
     }
     function refresh(_event) {
-        let matrikelFilter = document.getElementById('matrikel_find').value;
+        let matrikelFilter = document.getElementById("matrikel_find").value;
         if (matrikelFilter) {
             let query = "command=findByMatrikel";
             query += "&matrikel=" + matrikelFilter;
@@ -45,11 +45,31 @@ var DBClient;
     function handleFindResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output = document.getElementsByTagName("textarea")[0];
-            output.value = xhr.response;
+            console.log("Raw response: ", xhr.response);
             let responseAsJson = JSON.parse(xhr.response);
-            console.log(responseAsJson);
+            console.log("As JSON: ", responseAsJson);
         }
     }
+    function checkResponseError(_event) {
+        let xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            alert(xhr.response);
+        }
+    }
+    function updatePlayerScore(name, score) {
+        if (name.length > 0) {
+            let query = "command=updateScore";
+            query += "&name=" + name;
+            query += "&score=" + String(score);
+            sendRequest(query, checkResponseError);
+        }
+    }
+    DBClient.updatePlayerScore = updatePlayerScore;
+    function findByName(_name) {
+        let query = "command=findByName";
+        query += "&name=" + _name;
+        sendRequest(query, handleFindResponse);
+    }
+    DBClient.findByName = findByName;
 })(DBClient || (DBClient = {}));
 //# sourceMappingURL=DBClient.js.map

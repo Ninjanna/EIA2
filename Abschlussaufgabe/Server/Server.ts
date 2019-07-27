@@ -33,6 +33,31 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
     let command: string = query["command"];
 
     switch (command) {
+
+        case "findByName":
+            Database.findByName(query["name"], findCallback);
+            break;
+
+        case "insertScore":
+            let score: HighScoreData = {
+                name: query["name"],
+                highscore: parseInt(query["score"])
+            };
+            console.log(JSON.stringify(score));
+            Database.insertScore(score);
+            respond(_response, "storing data");
+            break;
+
+        case "updateScore":
+                let highscore: HighScoreData = {
+                    name: query["name"],
+                    highscore: parseInt(query["score"])
+                };
+                console.log(JSON.stringify(highscore));
+                Database.insertScore(highscore);
+                respond(_response, "storing data");
+                break;
+        /*
         case "insert":
             let student: StudentData = {
                 name: query["name"],
@@ -49,6 +74,7 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
         case "refresh":
             Database.findAll(findCallback);
             break;
+        */
         default:
             respond(_response, "unknown command: " + command);
             break;
@@ -56,7 +82,7 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 
     // findCallback is an inner function so that _response is in scope
     function findCallback(json: string): void {
-        console.log(json)
+        console.log(json);
         respond(_response, json);
     }
 }

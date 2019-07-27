@@ -37,7 +37,7 @@ namespace seaworld_inheritance {
                 this.dy = 0;
             }
             else {
-                if(this.y > canvas.height - 32) {
+                if (this.y > canvas.height - 32) {
                     this.y = canvas.height - 32;
                     this.dy = 0;
                 }
