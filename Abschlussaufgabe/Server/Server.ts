@@ -76,7 +76,7 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
             break;
         */
         default:
-            respond(_response, "unknown command: " + command);
+            respond(_response, JSON.stringify({status: "unknown command", "cmd": command}));
             break;
     }
 
