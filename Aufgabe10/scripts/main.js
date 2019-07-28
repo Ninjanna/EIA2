@@ -9,7 +9,7 @@ Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert.
 */
 var seaworld_canvas;
-(function (seaworld_canvas) {
+(function (seaworld_canvas) { 
     window.addEventListener("load", init);
     function init() {
         console.log("Wer wohnt da im Wasser, ja ganz tief im Meeer?");

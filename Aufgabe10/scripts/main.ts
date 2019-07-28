@@ -50,7 +50,7 @@ namespace seaworld_canvas {
         }
 
         //Boden Vorne
-        drawBodenVorne1("#d9ad73", 0, 500, crc);
+        drawBodenVorne1("#d9ad73", 0, 500, crc); 
 
         //color Array     
         let colors4fish: string[] = ["MediumOrchid ", "MediumVioletRed", "Orange", "OrangeRed", "Tomato", "Yellow", "Red", "Magenta", "Gold", "Crimson", "DarkMagenta"];

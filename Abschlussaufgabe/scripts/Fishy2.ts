@@ -78,7 +78,7 @@ namespace seaworld_inheritance {
             crc.lineWidth = 1;
             crc.stroke();
 
-            // streifen
+            // streifen 
             crc.beginPath();
             crc.moveTo(this.x + 60, this.y - 19);
             crc.quadraticCurveTo(this.x + 70, this.y + 5, this.x + 60, this.y + 26);

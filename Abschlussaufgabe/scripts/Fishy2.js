@@ -64,7 +64,7 @@ var seaworld_inheritance;
             seaworld_inheritance.crc.strokeStyle = this.c2;
             seaworld_inheritance.crc.lineWidth = 1;
             seaworld_inheritance.crc.stroke();
-            // streifen
+            // streifen 
             seaworld_inheritance.crc.beginPath();
             seaworld_inheritance.crc.moveTo(this.x + 60, this.y - 19);
             seaworld_inheritance.crc.quadraticCurveTo(this.x + 70, this.y + 5, this.x + 60, this.y + 26);

@@ -10,7 +10,7 @@ nicht kopiert und auch nicht diktiert.
 
 namespace seaworld_inheritance {
 
-    export class MovingObjects {
+    export class MovingObjects { 
 
         x: number;
         y: number;

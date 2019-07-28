@@ -16,7 +16,7 @@ namespace seaworld_inheritance {
 
         constructor(_c1: string, _c2: string) {
             super();
-            //this.x = Math.random() * canvas.width;
+            //this.x = Math.random() * canvas.width; 
             this.x = canvas.width - 100;
             this.y = 20 + Math.random() * 470;
             this.dx = 0.5 + Math.random() * 3;

@@ -5,5 +5,5 @@ interface AssocStringString1 {
 interface StudentData {
     name: string;
     firstname: string;
-    matrikel: number;
+    matrikel: number; 
 }
