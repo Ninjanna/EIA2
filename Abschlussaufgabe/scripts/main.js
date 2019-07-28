@@ -133,7 +133,7 @@ var seaworld_inheritance;
                         currentScore += 1;
                         scoreElement.innerText = String(currentScore);
                         movingObjects[i] = spawnFish();
-                        seaworld_inheritance.playerFish.scale += 0.01;
+                        seaworld_inheritance.playerFish.scale += 0.1;
                         if (seaworld_inheritance.playerFish.scale > 2) {
                             seaworld_inheritance.playerFish.scale = 2;
                         }

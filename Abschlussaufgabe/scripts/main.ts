@@ -161,7 +161,7 @@ namespace seaworld_inheritance {
                         currentScore += 1;
                         scoreElement.innerText = String(currentScore);
                         movingObjects[i] = spawnFish(); 
-                        playerFish.scale += 0.01;                        
+                        playerFish.scale += 0.1;                        
                         if (playerFish.scale > 2) {
                             playerFish.scale = 2;
                         }
