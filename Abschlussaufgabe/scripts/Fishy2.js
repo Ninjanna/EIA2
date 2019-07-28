@@ -16,15 +16,6 @@ var seaworld_inheritance;
         }
         update() {
             this.move();
-            /*
-                        let r: number[] = this.getBoundingRect();
-                        crc.beginPath();
-                        crc.moveTo(r[0], r[1]);
-                        crc.rect(r[0], r[1], r[2], r[3]);
-                        crc.strokeStyle = this.c1;
-                        crc.lineWidth = 2;
-                        crc.stroke();
-            */
             let x = this.x;
             let y = this.y;
             this.x /= this.scale;

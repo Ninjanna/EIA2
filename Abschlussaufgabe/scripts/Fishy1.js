@@ -13,7 +13,8 @@ var seaworld_inheritance;
     class Fishy1 extends seaworld_inheritance.MovingObjects {
         constructor(_c1, _c2) {
             super();
-            this.x = Math.random() * seaworld_inheritance.canvas.width;
+            //this.x = Math.random() * canvas.width;
+            this.x = seaworld_inheritance.canvas.width - 100;
             this.y = 20 + Math.random() * 470;
             this.dx = 0.5 + Math.random() * 3;
             this.dy = 0;
@@ -23,7 +24,7 @@ var seaworld_inheritance;
             this.c2 = _c2;
             this.scale = 0.5 + Math.random() * 1.5;
         }
-        getBoundingRect() {
+        gibViereck() {
             let w = 100 * this.scale;
             let h = 60 * this.scale;
             return [this.x, this.y - h / 2, w, h];

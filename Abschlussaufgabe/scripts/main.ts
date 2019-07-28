@@ -43,8 +43,8 @@ namespace seaworld_inheritance {
 
     ];
 
-    let fishOneAnzahl: number = 25;
-    let fishTwoAnzahl: number = 25;
+    let fishOneAnzahl: number = 20;
+    let fishTwoAnzahl: number = 20;
     let bubblesAnzahl: number = 50;
 
     let currentScore: number = 0;
@@ -69,12 +69,13 @@ namespace seaworld_inheritance {
         highScoreElement = document.getElementById("highscore");
         highScoreElement.innerText = String(highScore);
         nameElement = <HTMLInputElement>document.getElementById("name");
+        nameElement.value = "supergamer69";
 
         scoreElement = document.getElementById("score");
         scoreElement.innerText = String(currentScore);
 
         //EventListener für Futter
-        canvas.addEventListener("click", mahlzeit);
+        // anvas.addEventListener("click", mahlzeit);
         document.addEventListener("keydown", handleKeydown);
 
         crc.strokeStyle = "black";
@@ -103,8 +104,8 @@ namespace seaworld_inheritance {
         update();
 
     }
-
-    function intersectRect(a: number[], b: number[]): boolean {
+//checken ob das viereck, was um den fisch erzeugt wird mim spieler kollidiert 
+    function fischBeruehrung(a: number[], b: number[]): boolean {
         let aLeft: number = a[0];
         let aTop: number = a[1];
         let bLeft: number = b[0];
@@ -123,15 +124,15 @@ namespace seaworld_inheritance {
         crc.clearRect(0, 0, crc.canvas.width, crc.canvas.height);
         crc.putImageData(imageData, 0, 0);
 
-        let playerFishRect: number[] = playerFish.getBoundingRect();
+        let playerFishRect: number[] = playerFish.gibViereck();
 
         for (let i: number = 0; i < movingObjects.length; i++) {
             //console.log(Math.abs(movingObjects[i].x - playerFish.x), Math.abs(movingObjects[i].y - playerFish.y), movingObjects[i].scale);
             //console.log(playerFish.x, playerFish.y, playerFish.scale);
             if (!(movingObjects[i].scale == null)) {
-                let fishRect: number[] = movingObjects[i].getBoundingRect();   
+                let fishRect: number[] = movingObjects[i].gibViereck();   
                 //console.log(fishRect, " vs. ", playerFishRect);
-                if (intersectRect(playerFishRect, fishRect)) {
+                if (fischBeruehrung(playerFishRect, fishRect)) {
                     if (movingObjects[i].scale > playerFish.scale) {
                         //console.log("Hit ", movingObjects[i].scale, " => Dead");
                         if (nameElement.value.length > 0) {
@@ -193,22 +194,22 @@ namespace seaworld_inheritance {
 
     function handleKeydown(_event: KeyboardEvent): void {
         if (_event.keyCode === 38) {
-            // up arrow
+            // hoch
             playerFish.dx = 0;
             playerFish.dy = -16;
         }
         else if (_event.keyCode === 40) {
-            // down arrow
+            // runter
             playerFish.dx = 0;
             playerFish.dy = 16;
         }
         else if (_event.keyCode === 37) {
-           // left arrow
+           // lianks
            playerFish.dx = -16;
            playerFish.dy = 0;
         }
         else if (_event.keyCode === 39) {
-           // right arrow
+           // reachts
            playerFish.dx = +16;
            playerFish.dy = 0;
         }

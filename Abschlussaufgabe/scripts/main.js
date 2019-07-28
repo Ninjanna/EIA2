@@ -33,8 +33,8 @@ var seaworld_inheritance;
         "MediumSeaGreen",
         "DarkSeaGreen"
     ];
-    let fishOneAnzahl = 25;
-    let fishTwoAnzahl = 25;
+    let fishOneAnzahl = 20;
+    let fishTwoAnzahl = 20;
     let bubblesAnzahl = 50;
     let currentScore = 0;
     let highScore = 0;
@@ -55,10 +55,11 @@ var seaworld_inheritance;
         highScoreElement = document.getElementById("highscore");
         highScoreElement.innerText = String(highScore);
         nameElement = document.getElementById("name");
+        nameElement.value = "supergamer69";
         scoreElement = document.getElementById("score");
         scoreElement.innerText = String(currentScore);
         //EventListener für Futter
-        seaworld_inheritance.canvas.addEventListener("click", mahlzeit);
+        // anvas.addEventListener("click", mahlzeit);
         document.addEventListener("keydown", handleKeydown);
         seaworld_inheritance.crc.strokeStyle = "black";
         seaworld_inheritance.crc.strokeRect(0, 0, seaworld_inheritance.canvas.width, seaworld_inheritance.canvas.height);
@@ -79,7 +80,8 @@ var seaworld_inheritance;
         DBClient.topScores();
         update();
     }
-    function intersectRect(a, b) {
+    //checken ob das viereck, was um den fisch erzeugt wird mim spieler kollidiert 
+    function fischBeruehrung(a, b) {
         let aLeft = a[0];
         let aTop = a[1];
         let bLeft = b[0];
@@ -95,14 +97,14 @@ var seaworld_inheritance;
         window.setTimeout(update, 1000 / fps);
         seaworld_inheritance.crc.clearRect(0, 0, seaworld_inheritance.crc.canvas.width, seaworld_inheritance.crc.canvas.height);
         seaworld_inheritance.crc.putImageData(imageData, 0, 0);
-        let playerFishRect = seaworld_inheritance.playerFish.getBoundingRect();
+        let playerFishRect = seaworld_inheritance.playerFish.gibViereck();
         for (let i = 0; i < movingObjects.length; i++) {
             //console.log(Math.abs(movingObjects[i].x - playerFish.x), Math.abs(movingObjects[i].y - playerFish.y), movingObjects[i].scale);
             //console.log(playerFish.x, playerFish.y, playerFish.scale);
             if (!(movingObjects[i].scale == null)) {
-                let fishRect = movingObjects[i].getBoundingRect();
+                let fishRect = movingObjects[i].gibViereck();
                 //console.log(fishRect, " vs. ", playerFishRect);
-                if (intersectRect(playerFishRect, fishRect)) {
+                if (fischBeruehrung(playerFishRect, fishRect)) {
                     if (movingObjects[i].scale > seaworld_inheritance.playerFish.scale) {
                         //console.log("Hit ", movingObjects[i].scale, " => Dead");
                         if (nameElement.value.length > 0) {
@@ -156,22 +158,22 @@ var seaworld_inheritance;
     }
     function handleKeydown(_event) {
         if (_event.keyCode === 38) {
-            // up arrow
+            // hoch
             seaworld_inheritance.playerFish.dx = 0;
             seaworld_inheritance.playerFish.dy = -16;
         }
         else if (_event.keyCode === 40) {
-            // down arrow
+            // runter
             seaworld_inheritance.playerFish.dx = 0;
             seaworld_inheritance.playerFish.dy = 16;
         }
         else if (_event.keyCode === 37) {
-            // left arrow
+            // lianks
             seaworld_inheritance.playerFish.dx = -16;
             seaworld_inheritance.playerFish.dy = 0;
         }
         else if (_event.keyCode === 39) {
-            // right arrow
+            // reachts
             seaworld_inheritance.playerFish.dx = +16;
             seaworld_inheritance.playerFish.dy = 0;
         }

@@ -16,7 +16,8 @@ namespace seaworld_inheritance {
 
         constructor(_c1: string, _c2: string) {
             super();
-            this.x = Math.random() * canvas.width;
+            //this.x = Math.random() * canvas.width;
+            this.x = canvas.width - 100;
             this.y = 20 + Math.random() * 470;
             this.dx = 0.5 + Math.random() * 3;
             this.dy = 0;
@@ -27,7 +28,7 @@ namespace seaworld_inheritance {
             this.scale = 0.5 + Math.random() * 1.5;
         }
 
-        getBoundingRect(): number[] {
+        gibViereck(): number[] {
             let w: number = 100 * this.scale;
             let h: number = 60 * this.scale;
             return [this.x, this.y - h / 2, w, h];

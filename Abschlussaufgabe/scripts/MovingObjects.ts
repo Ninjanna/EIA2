@@ -1,5 +1,4 @@
 /*
-Aufgabe 12: Canvas Vererbung&Polymorphie
 Name: Jeanna Nechypurenko
 Matrikel: 275537
 Datum: 23.06.2019
@@ -28,7 +27,7 @@ namespace seaworld_inheritance {
 
         update(): void { }
 
-        getBoundingRect(): number[] {
+        gibViereck(): number[] {
             return [this.x, this.y, 1, 1];
         }
 
