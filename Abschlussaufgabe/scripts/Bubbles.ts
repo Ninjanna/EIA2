@@ -35,7 +35,7 @@ namespace seaworld_inheritance {
             this.draw();
         }
 
-        draw(): void {
+        draw(): void { 
             crc.beginPath();
             crc.arc(this.x, this.y, this.r, 0, this.angle);
             crc.strokeStyle = this.c1;

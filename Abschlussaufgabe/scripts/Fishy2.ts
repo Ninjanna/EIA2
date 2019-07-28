@@ -74,7 +74,7 @@ namespace seaworld_inheritance {
             crc.fillStyle = this.c2;
             crc.fill();
             crc.closePath();
-            crc.strokeStyle = this.c2;
+            crc.strokeStyle = this.c2; 
             crc.lineWidth = 1;
             crc.stroke();
 

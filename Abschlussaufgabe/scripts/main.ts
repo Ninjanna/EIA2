@@ -18,7 +18,7 @@ namespace seaworld_inheritance {
     let imageData: ImageData;
     let fps: number = 30;
 
-    let movingObjects: MovingObjects[] = [];
+    let movingObjects: MovingObjects[] = []; 
     export let playerFish: PlayerFish;
 
     let colors4fish: string[] = [

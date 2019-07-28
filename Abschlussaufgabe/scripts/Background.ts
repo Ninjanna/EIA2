@@ -85,7 +85,7 @@ namespace seaworld_inheritance {
         crc.fill();
         crc.closePath();
 
-    }
+    } 
 
     //draw alge nach rechts geneigt
     export function drawAlgeOne(_c1: string, _c2: string, _x: number, _y: number): void {

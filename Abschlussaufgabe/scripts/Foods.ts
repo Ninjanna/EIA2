@@ -9,7 +9,7 @@ Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert.  
 */
 
-namespace seaworld_inheritance {
+namespace seaworld_inheritance { 
 
     export class Foods extends Bubbles {
 

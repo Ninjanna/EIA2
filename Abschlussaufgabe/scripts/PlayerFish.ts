@@ -6,7 +6,7 @@ Datum: 23.06.2019
 
 Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
-nicht kopiert und auch nicht diktiert.  
+nicht kopiert und auch nicht diktiert.   
 */
 
 

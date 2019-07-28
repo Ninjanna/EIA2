@@ -11,7 +11,7 @@ nicht kopiert und auch nicht diktiert.
 
 namespace seaworld_inheritance {
 
-    export class Fishy1 extends MovingObjects {
+    export class Fishy1 extends MovingObjects { 
 
 
         constructor(_c1: string, _c2: string) {
